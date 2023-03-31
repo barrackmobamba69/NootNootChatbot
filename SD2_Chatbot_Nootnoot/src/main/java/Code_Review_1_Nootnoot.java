@@ -8,14 +8,11 @@ import java.util.Scanner;
 public class Code_Review_1_Nootnoot {
 
 	public static void main(String[] args) throws Exception {
-    	String open_weather_api_key = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
-    	Scanner scan = new Scanner(System.in); //Created a scanner object
-    	
-        welcomeMessage(); //Calling welcomeMessage method
+    	String open_weather_api_key = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key    	
+        welcomeMessage(); //Calling welcomeMessage() method
 
-        while (true) { //Inifite loop until user types 'quit' or 'q'
-        	System.out.println("What location would you like to know the weather for? "); //Printing users input
-        	String city = scan.nextLine(); //Reading users input
+        while (true) {
+            String city = inputLocation(); //Calling inputLocation() method
 
         	System.out.println("\nPlease hang on a second....."); //Printing user to wait for couple of seconds
         	//This pauses the execution of the thread for 2000 milliseconds
@@ -73,10 +70,18 @@ public class Code_Review_1_Nootnoot {
 	    return String.format("%.2f", celsiusTemperature); //Returns the temperature as a String with 2 decimal places
 	}
 	
-	//This method greets the user
+	//This method greets the user by printing welcoming message
 	private static void welcomeMessage() {
 	    System.out.println("Welcome to the Weather ChatBot! \nHi my name's Nootnoot");
 	}
+
+	//This method uses Scanner object to ask the user to input the city name
+	private static String inputLocation() {
+	    Scanner scan = new Scanner(System.in); //Created a scanner object
+	    System.out.println("What location would you like to know the weather for? "); //Printing users input
+	    return scan.nextLine(); //Reading users' input
+	}
+
 
 }
 
