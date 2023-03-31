@@ -7,8 +7,9 @@ import java.util.Scanner;
 
 public class Code_Review_1_Nootnoot {
 
+    private static final String open_weather_api_key = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
+    
 	public static void main(String[] args) throws Exception {
-    	String open_weather_api_key = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key    	
         welcomeMessage(); //Calling welcomeMessage() method
 
         while (true) {
@@ -21,19 +22,15 @@ public class Code_Review_1_Nootnoot {
             }
 
             String weatherData = fetchWeatherData(city, open_weather_api_key); //Calling fetchWeatherData() method
+            String temperature = extractTemperatureInCelsius(weatherData); //Calling extractTemperature() method
+
+            //We print out the temperature in Celsius degrees
+            System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
 
         }
 	}
 
-    //This method extracts the weather in degrees Celsius from the raw weather data
-    //Now the extracted temperature value is converted into String format with 2 decimal places.
-	private static String extractTemperatureInCelsius(String weatherData) {
-		int startIndex = weatherData.indexOf("temp\":") + 6; //Getting start and end index
-	    int endIndex = weatherData.indexOf(",", startIndex);
-	    double kelvinTemperature = Double.parseDouble(weatherData.substring(startIndex, endIndex));
-	    double celsiusTemperature  = kelvinTemperature - 273.15; //Converting Kelvin to Celsius, because Celsius scale is also commonly 
-	    return String.format("%.2f", celsiusTemperature); //Returns the temperature as a String with 2 decimal places
-	}
+	//------- All the methods are called below ---------
 	
 	//This method greets the user by printing welcoming message
 	private static void welcomeMessage() {
@@ -90,8 +87,15 @@ public class Code_Review_1_Nootnoot {
 	    return weatherDataString.toString(); //Returns the weather data into string format
 	}
 
-
-
+    //This method extracts the weather in degrees Celsius from the raw weather data
+    //Now the extracted temperature value is converted into String format with 2 decimal places.
+	private static String extractTemperatureInCelsius(String weatherData) {
+		int startIndex = weatherData.indexOf("temp\":") + 6; //Getting start and end index
+	    int endIndex = weatherData.indexOf(",", startIndex);
+	    double kelvinTemperature = Double.parseDouble(weatherData.substring(startIndex, endIndex));
+	    double celsiusTemperature  = kelvinTemperature - 273.15; //Converting Kelvin to Celsius, because Celsius scale is also commonly 
+	    return String.format("%.2f", celsiusTemperature); //Returns the temperature as a String with 2 decimal places
+	}
 
 }
 
