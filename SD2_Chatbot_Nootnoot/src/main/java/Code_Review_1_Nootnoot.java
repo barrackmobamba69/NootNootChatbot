@@ -13,11 +13,8 @@ public class Code_Review_1_Nootnoot {
 
         while (true) {
             String city = inputLocation(); //Calling inputLocation() method
-
-        	System.out.println("\nPlease hang on a second....."); //Printing user to wait for couple of seconds
-        	//This pauses the execution of the thread for 2000 milliseconds
-        	//From this feature creates a more realistic experience for the user by introducing a delay that simulates actual processing time
-        	Thread.sleep(2000); //Waiting for 2 seconds before printing the weather
+            
+            dealyedExecution(); //Calling pauseExecution() method
 
         	//This code represnts how the user can end the conversation with Nootnoot
         	//This code functionality lets the user too quit the Nootnoot chatbot via "quit" or "q" commands
@@ -80,6 +77,14 @@ public class Code_Review_1_Nootnoot {
 	    Scanner scan = new Scanner(System.in); //Created a scanner object
 	    System.out.println("What location would you like to know the weather for? "); //Printing users input
 	    return scan.nextLine(); //Reading users' input
+	}
+	
+	//This method prints a message and simulates processing time by pausing execution for 2 seconds
+	private static void dealyedExecution() throws InterruptedException{
+    	System.out.println("\nPlease hang on a second....."); //Printing user to wait for couple of seconds
+    	//This pauses the execution of the thread for 2000 milliseconds
+    	//From this feature creates a more realistic experience for the user by introducing a delay that simulates actual processing time
+    	Thread.sleep(2000); //Waiting for 2 seconds before printing the weather
 	}
 
 
