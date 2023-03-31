@@ -10,7 +10,6 @@ public class Code_Review_1_Nootnoot {
 	public static void main(String[] args) throws Exception {
     	String open_weather_api_key = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
     	Scanner scan = new Scanner(System.in); //Created a scanner object
-    	System.out.println("Heya");//Nootnoot saying hello
     	System.out.println("Welcome to the Weather ChatBot! \nHi my name's Nootnoot"); //Nootnoot introduces itself and prints a welcome message to the user
 
         while (true) { //Inifite loop until user types 'quit' or 'q'
@@ -27,11 +26,9 @@ public class Code_Review_1_Nootnoot {
                 System.out.println("Thanks you and have a great day :)");
                 break;
             }
-        }
 
 	    	//Implementing try-catch block
 	    	try {
-	        	String city = scan.nextLine(); //Reading users input
 				URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + open_weather_api_key);
 		        HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //created a new connection to the API using HTTP protocol
 		        connection.setRequestMethod("GET");
@@ -47,10 +44,21 @@ public class Code_Review_1_Nootnoot {
 	
 		        //Extracting temperature data from the response
 		        String weatherData = weatherDataString.toString();
+		        String temperature = extractTemperatureInCelsius(weatherData);
+		        
+		        //This print statements prints out the temperature of the city in degrees Celsius
+		        System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
+
 	        }
 	    	catch(Exception e) {
-	    		//  Block of code to handle errors
+	    		System.out.println("Error!! Please try again.");
 	    	}
-
+        }
 	}
+
+	private static String extractTemperatureInCelsius(String weatherData) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
