@@ -16,6 +16,11 @@ public class Code_Review_1_Nootnoot {
         	System.out.println("What location would you like to know the weather for? "); //Printing users input
         	String city = scan.nextLine(); //Reading users input
 
+        	System.out.println("\nPlease hang on a second....."); //Printing user to wait for couple of seconds
+        	//This pauses the execution of the thread for 2000 milliseconds
+        	//From this feature creates a more realistic experience for the user by introducing a delay that simulates actual processing time
+        	Thread.sleep(2000); //Waiting for 2 seconds before printing the weather
+
         	//This code represnts how the user can end the conversation with Nootnoot
         	//This code functionality lets the user too quit the Nootnoot chatbot via "quit" or "q" commands
         	if (city.equalsIgnoreCase("quit")) {
@@ -23,41 +28,42 @@ public class Code_Review_1_Nootnoot {
                 break;
             }
             else if (city.equalsIgnoreCase("q")) {
-                System.out.println("Thanks you and have a great day :)");
+                System.out.println("Thank you and have a great day :)");
                 break;
             }
 
         	//Implementing try-catch block code for handling any kind of errors
-	    	try {
-				URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + open_weather_api_key);
+            try {
+		        URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + open_weather_api_key);
 		        HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //created a new connection to the API using HTTP protocol
 		        connection.setRequestMethod("GET");
 		        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 		        String line;
 		        StringBuilder weatherDataString = new StringBuilder();
-	
+
 		        //Reading the response from the OpenWeatherMap.org api website
 		        while ((line = reader.readLine()) != null) {
 		        	weatherDataString.append(line);
 		        }
 		        reader.close();
-	
+
 		        //Extracting temperature data from the response
 		        String weatherData = weatherDataString.toString();
 		        String temperature = extractTemperatureInCelsius(weatherData);
-		        
+
 		        //This print statements prints out the temperature of the city in degrees Celsius
 		        System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
-
-	        }
+            }
+            
             //This block of code handles any exceptions that occur while trying to fetch weather data from OpenWeatherMap.org api website
-	    	catch(Exception e) {
-	    		System.out.println("Error!! Please try again.");
+            catch (Exception e) {
+            	System.out.println("\nOops!! Error fetching weather data. Please try again."); //Prints error statement
 	    	}
         }
 	}
 
-	//This function returns the weather in String format which is extracted from the raw weather data from weatherData
+    //This method extracts the weather in degrees Celsius from the raw weather data
+    //Now the extracted temperature value is converted into String format with 2 decimal places.
 	private static String extractTemperatureInCelsius(String weatherData) {
 		int startIndex = weatherData.indexOf("temp\":") + 6; //Getting start and end index
 	    int endIndex = weatherData.indexOf(",", startIndex);
