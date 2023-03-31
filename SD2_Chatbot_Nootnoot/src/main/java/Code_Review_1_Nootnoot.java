@@ -27,7 +27,7 @@ public class Code_Review_1_Nootnoot {
                 break;
             }
 
-	    	//Implementing try-catch block
+        	//Implementing try-catch block code for handling any kind of errors
 	    	try {
 				URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + open_weather_api_key);
 		        HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //created a new connection to the API using HTTP protocol
@@ -50,15 +50,20 @@ public class Code_Review_1_Nootnoot {
 		        System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
 
 	        }
+            //This block of code handles any exceptions that occur while trying to fetch weather data from OpenWeatherMap.org api website
 	    	catch(Exception e) {
 	    		System.out.println("Error!! Please try again.");
 	    	}
         }
 	}
 
+	//This function returns the weather in String format which is extracted from the raw weather data from weatherData
 	private static String extractTemperatureInCelsius(String weatherData) {
-		// TODO Auto-generated method stub
-		return null;
+		int startIndex = weatherData.indexOf("temp\":") + 6; //Getting start and end index
+	    int endIndex = weatherData.indexOf(",", startIndex);
+	    double kelvinTemperature = Double.parseDouble(weatherData.substring(startIndex, endIndex));
+	    double celsiusTemperature  = kelvinTemperature - 273.15; //Converting Kelvin to Celsius, because Celsius scale is also commonly 
+	    return String.format("%.2f", celsiusTemperature); //Returns the temperature as a String with 2 decimal places
 	}
 
 }
