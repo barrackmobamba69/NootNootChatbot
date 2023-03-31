@@ -14,19 +14,13 @@ public class Code_Review_1_Nootnoot {
         while (true) {
             String city = inputLocation(); //Calling inputLocation() method
             
-            dealyedExecution(); //Calling pauseExecution() method
+            delayedExecution(); //Calling pauseExecution() method
 
-        	//This code represnts how the user can end the conversation with Nootnoot
-        	//This code functionality lets the user too quit the Nootnoot chatbot via "quit" or "q" commands
-        	if (city.equalsIgnoreCase("quit")) {
-                System.out.println("Thank you and have a great day :)");
-                break;
-            }
-            else if (city.equalsIgnoreCase("q")) {
-                System.out.println("Thank you and have a great day :)");
+            if (endConversation(city)) { //Calling endConversation() method
                 break;
             }
 
+            
         	//Implementing try-catch block code for handling any kind of errors
             try {
 		        URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + open_weather_api_key);
@@ -80,12 +74,23 @@ public class Code_Review_1_Nootnoot {
 	}
 	
 	//This method prints a message and simulates processing time by pausing execution for 2 seconds
-	private static void dealyedExecution() throws InterruptedException{
+	private static void delayedExecution() throws InterruptedException{
     	System.out.println("\nPlease hang on a second....."); //Printing user to wait for couple of seconds
     	//This pauses the execution of the thread for 2000 milliseconds
     	//From this feature creates a more realistic experience for the user by introducing a delay that simulates actual processing time
     	Thread.sleep(2000); //Waiting for 2 seconds before printing the weather
 	}
+
+	//This code represents how the user can end the conversation with Nootnoot
+	//This code functionality lets the user too quit the Nootnoot chatbot via "quit" or "q" commands
+	private static boolean endConversation(String city) {
+	    if (city.equalsIgnoreCase("quit") || city.equalsIgnoreCase("q")) {
+	        System.out.println("Thank you and have a great day :)");
+	        return true;
+	    }
+	    return false;
+	}
+
 
 
 }
