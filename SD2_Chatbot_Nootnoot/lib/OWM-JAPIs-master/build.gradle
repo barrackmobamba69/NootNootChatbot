@@ -1,0 +1,155 @@
+/**************************************************************************************************
+ * Copyright (c) 2013-2019 Ashutosh Kumar Singh <ashutosh@aksingh.net>                            *
+ *                                                                                                *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this           *
+ * software and associated documentation files (the "Software"), to deal in the Software without  *
+ * restriction, including without limitation the rights to use, copy, modify, merge, publish,     *
+ * distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the  *
+ * Software is furnished to do so, subject to the following conditions:                           *
+ *                                                                                                *
+ * The above copyright notice and this permission notice shall be included in all copies or       *
+ * substantial portions of the Software.                                                          *
+ *                                                                                                *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING  *
+ * BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND     *
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,   *
+ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, *
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.        *
+ **************************************************************************************************/
+
+apply plugin: "java"
+apply plugin: "kotlin"
+apply plugin: "org.jetbrains.dokka"
+
+apply plugin: "maven"
+apply plugin: "signing"
+
+sourceCompatibility = 1.8
+
+group = "net.aksingh"
+archivesBaseName = "owm-japis"
+version = "2.5.3.0"
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+//  compile "org.threeten:threetenbp:1.3.6"
+
+  compile "com.google.code.gson:gson:2.8.5"
+
+  compile "com.squareup.retrofit2:retrofit:2.5.0"
+  compile "com.squareup.retrofit2:converter-gson:2.5.0"
+
+  compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+  compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+}
+
+task javadocJar(type: Jar) {
+  classifier = "javadoc"
+  from javadoc
+}
+
+task sourcesJar(type: Jar) {
+  classifier = "sources"
+  from sourceSets.main.allSource
+}
+
+task dokkaJavadoc(type: org.jetbrains.dokka.gradle.DokkaTask) {
+  outputFormat = "javadoc"
+  outputDirectory = "$rootDir/docs"
+
+  jdkVersion = 8
+  impliedPlatforms = ["JVM"]
+}
+
+task deleteUnusedJavadocAssets(type: Delete, dependsOn: "dokkaJavadoc") {
+  doLast {
+    try {
+      file("$rootDir/docs").traverse(type: groovy.io.FileType.DIRECTORIES) {
+        if (it.absolutePath.contains("net/aksingh/owmjapis/demo") ||
+          it.absolutePath.contains("net\\aksingh\\owmjapis\\demo")) {
+          delete it
+          println "DELETED: " + it
+        } else {
+          println "SKIPPED: " + it
+        }
+      }
+    } catch (FileNotFoundException e) {
+      /* Do nothing */
+    }
+  }
+}
+
+task dokkaJavadocJar(type: Jar, dependsOn: "deleteUnusedJavadocAssets") {
+  classifier = "javadoc"
+  from "$rootDir/docs"
+}
+
+artifacts {
+  archives dokkaJavadocJar, sourcesJar
+}
+
+signing {
+  sign configurations.archives
+}
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+        authentication(userName: ossrhUsername, password: ossrhPassword)
+      }
+
+      pom.project {
+        name "OWM JAPIs"
+        packaging "jar"
+        description "Java Library for OpenWeatherMap.org Weather APIs"
+        url "http://go.aksingh.net/owm-japis"
+
+        scm {
+          connection "scm:svn:http://foo.googlecode.com/svn/trunk/"
+          developerConnection "scm:svn:https://foo.googlecode.com/svn/trunk/"
+          url "http://foo.googlecode.com/svn/trunk/"
+        }
+
+        licenses {
+          license {
+            name "The MIT License (MIT)"
+            url "http://opensource.org/licenses/MIT"
+          }
+        }
+
+        developers {
+          developer {
+            id "aksinghnet"
+            name "Ashutosh Kumar Singh"
+            email "ashutosh@aksingh.net"
+          }
+        }
+      }
+    }
+  }
+}
+
+buildscript {
+  ext.kotlin_version = "1.3.30"
+  ext.dokka_version = "0.9.17"
+
+  repositories {
+    jcenter()
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
+  }
+}

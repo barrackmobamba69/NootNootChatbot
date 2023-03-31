@@ -1,0 +1,19 @@
+# NetBeans
+lib/nblibraries.properties
+nbproject/
+build/
+build.xml
+
+# Gradle
+.gradle/
+
+# IntelliJ IDEA
+.idea/
+owm-japis.iml
+lib/CopyLibs/
+dist/
+out/
+
+# Custom
+src/main/kotlin/net/aksingh/owmjapis/demo/
+docs/net/aksingh/owmjapis/demo/
