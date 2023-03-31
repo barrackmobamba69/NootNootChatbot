@@ -20,34 +20,8 @@ public class Code_Review_1_Nootnoot {
                 break;
             }
 
-            
-        	//Implementing try-catch block code for handling any kind of errors
-            try {
-		        URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + open_weather_api_key);
-		        HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //created a new connection to the API using HTTP protocol
-		        connection.setRequestMethod("GET");
-		        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-		        String line;
-		        StringBuilder weatherDataString = new StringBuilder();
+            String weatherData = fetchWeatherData(city, open_weather_api_key); //Calling fetchWeatherData() method
 
-		        //Reading the response from the OpenWeatherMap.org api website
-		        while ((line = reader.readLine()) != null) {
-		        	weatherDataString.append(line);
-		        }
-		        reader.close();
-
-		        //Extracting temperature data from the response
-		        String weatherData = weatherDataString.toString();
-		        String temperature = extractTemperatureInCelsius(weatherData);
-
-		        //This print statements prints out the temperature of the city in degrees Celsius
-		        System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
-            }
-            
-            //This block of code handles any exceptions that occur while trying to fetch weather data from OpenWeatherMap.org api website
-            catch (Exception e) {
-            	System.out.println("\nOops!! Error fetching weather data. Please try again."); //Prints error statement
-	    	}
         }
 	}
 
@@ -90,6 +64,32 @@ public class Code_Review_1_Nootnoot {
 	    }
 	    return false;
 	}
+	
+	//This method fetches weather data from the OpenWeatherMap.org API website and returns the weather date in String format 
+	//It also handles any exceptions that may occur while trying to fetch the data
+	private static String fetchWeatherData(String city, String open_weather_api_key) {
+	    StringBuilder weatherDataString = new StringBuilder();
+    	//Implementing try-catch block code for handling any kind of errors that occur during I/O operations
+	    try {
+	        URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + open_weather_api_key);
+	        HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //created a new connection to the API using HTTP protocol
+	        connection.setRequestMethod("GET"); //setting request method as 'GET'
+	        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream())); //Processes the response from the website
+	        String line;
+
+	        //Reading the response from the OpenWeatherMap.org api website
+	        while ((line = reader.readLine()) != null) {
+	            weatherDataString.append(line);
+	        }
+	        reader.close(); //Close BufferedReader object
+	    }
+        //This block of code handles any exceptions that occur while trying to fetch weather data from OpenWeatherMap.org api website
+	    catch (Exception e) {
+	        System.out.println("\nOops!! Error fetching weather data. Please try again."); //Prints error statement
+	    }
+	    return weatherDataString.toString(); //Returns the weather data into string format
+	}
+
 
 
 
