@@ -1,4 +1,8 @@
 //These are the necessary import statements for using classes from the Java API and for making HTTP requests
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.Scanner;
 
 public class Code_Review_1_Nootnoot {
@@ -25,13 +29,28 @@ public class Code_Review_1_Nootnoot {
             }
         }
 
-    	//Implementing try-catch block
-    	try {
-    		//  Block of code to try
-    		}
-    	catch(Exception e) {
-    		//  Block of code to handle errors
-    	}
+	    	//Implementing try-catch block
+	    	try {
+	        	String city = scan.nextLine(); //Reading users input
+				URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + open_weather_api_key);
+		        HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //created a new connection to the API using HTTP protocol
+		        connection.setRequestMethod("GET");
+		        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+		        String line;
+		        StringBuilder weatherDataString = new StringBuilder();
+	
+		        //Reading the response from the OpenWeatherMap.org api website
+		        while ((line = reader.readLine()) != null) {
+		        	weatherDataString.append(line);
+		        }
+		        reader.close();
+	
+		        //Extracting temperature data from the response
+		        String weatherData = weatherDataString.toString();
+	        }
+	    	catch(Exception e) {
+	    		//  Block of code to handle errors
+	    	}
 
 	}
 }
