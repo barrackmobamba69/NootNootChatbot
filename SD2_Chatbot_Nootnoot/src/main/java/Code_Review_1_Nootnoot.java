@@ -10,7 +10,8 @@ public class Code_Review_1_Nootnoot {
 	public static void main(String[] args) throws Exception {
     	String open_weather_api_key = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
     	Scanner scan = new Scanner(System.in); //Created a scanner object
-    	System.out.println("Welcome to the Weather ChatBot! \nHi my name's Nootnoot"); //Nootnoot introduces itself and prints a welcome message to the user
+    	
+        welcomeMessage(); //Calling welcomeMessage method
 
         while (true) { //Inifite loop until user types 'quit' or 'q'
         	System.out.println("What location would you like to know the weather for? "); //Printing users input
@@ -71,5 +72,11 @@ public class Code_Review_1_Nootnoot {
 	    double celsiusTemperature  = kelvinTemperature - 273.15; //Converting Kelvin to Celsius, because Celsius scale is also commonly 
 	    return String.format("%.2f", celsiusTemperature); //Returns the temperature as a String with 2 decimal places
 	}
+	
+	//This method greets the user
+	private static void welcomeMessage() {
+	    System.out.println("Welcome to the Weather ChatBot! \nHi my name's Nootnoot");
+	}
 
 }
+
