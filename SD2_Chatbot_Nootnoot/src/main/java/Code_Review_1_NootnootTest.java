@@ -39,6 +39,14 @@ public class Code_Review_1_NootnootTest {
 	    assertTrue(Code_Review_1_Nootnoot.endConversation(inputTwo));
 	}
 
+	
+	@Test
+	public void testFetchWeatherData() {
+	    String city = "New York";
+	    String weatherData = Code_Review_1_Nootnoot.fetchWeatherData(city, Code_Review_1_Nootnoot.OPEN_WEATHER_API_KEY);
+	    assertTrue(weatherData.contains("weather") && weatherData.contains("main") && weatherData.contains("temp"));
+	}
+
 
 }
 
