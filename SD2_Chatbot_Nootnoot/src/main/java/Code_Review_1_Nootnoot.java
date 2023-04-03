@@ -7,17 +7,7 @@ import java.util.Scanner;
 
 public class Code_Review_1_Nootnoot {
 
-<<<<<<< SD2_Chatbot_Nootnoot/src/main/java/Code_Review_1_Nootnoot.java
-    private static final String open_weather_api_key = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
-    
-	public static void main(String[] args) throws Exception {
-        welcomeMessage(); //Calling welcomeMessage() method
-        
-		// Adding scanner to read input from standard input stream
-		Scanner scanner = new Scanner(System.in);
-=======
 	private static final String OPEN_WEATHER_API_KEY = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
->>>>>>> SD2_Chatbot_Nootnoot/src/main/java/Code_Review_1_Nootnoot.java
 
 		public static void main(String[] args) throws Exception {
 			welcomeMessage(); //Calling welcomeMessage() method
@@ -27,34 +17,6 @@ public class Code_Review_1_Nootnoot {
 	          
 	            delayedExecution(); //Calling pauseExecution() method
 
-<<<<<<< SD2_Chatbot_Nootnoot/src/main/java/Code_Review_1_Nootnoot.java
-            String weatherData = fetchWeatherData(city, open_weather_api_key); //Calling fetchWeatherData() method
-            String temperature = extractTemperatureInCelsius(weatherData); //Calling extractTemperature() method
-                   
-          	 //Converting the temperature string to double.	            	
-           	double temp = Double.parseDouble(temperature);
-           	
-        	//Calling the weatherCondition method and also saving its results in a variable of string.
-            String weatherCondition = getWeatherCondition(Double.parseDouble(temperature));
-            
-            //Calling the clothingSuggestion method and saving its results in a string variable.
-            String clothingSuggestion = suggestClothing(temperature);
-
-            //We print out the temperature in Celsius degrees
-            System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
-            
-            //Printing out the weather condition
-            System.out.println("According to the reports, the weather looks like " + weatherCondition);
-            
-            //printing out the clothing suggestion
-            System.out.println("The best choice of clothing is " + clothingSuggestion);
-        }
-        
-        //closing the scanner
-        scanner.close();
-
-	}
-=======
 	            if (endConversation(city)) { //Calling endConversation() method
 	            	break;
 	            }
@@ -72,7 +34,6 @@ public class Code_Review_1_Nootnoot {
 		}
 
 	//--------------- All the methods are called below ----------------
->>>>>>> SD2_Chatbot_Nootnoot/src/main/java/Code_Review_1_Nootnoot.java
 
 	//This method greets the user by printing welcoming message
 	private static void welcomeMessage() {
@@ -103,45 +64,7 @@ public class Code_Review_1_Nootnoot {
 	    }
 	    return false;
 	}
-<<<<<<< SD2_Chatbot_Nootnoot/src/main/java/Code_Review_1_Nootnoot.java
-	
-//	Code or method, that suggest the type of cloth to wear while going outside, according to the temprature of the area.
-	private static String suggestClothing(String temperature) {
-        double temp = Double.parseDouble(temperature);
-        if (temp < 5) {
-            return "a heavy coat or jacket, thick gloves, a winter scarf, and a hat that could cover your ears.";
-        } else if (temp >= 5 && temp < 10) {
-            return "a warm coat, gloves, and hat if required.";
-        } else if (temp >= 10 && temp < 20) {
-            return "a jacket, a hoodie or a sweater.";
-        } else if (temp >= 20 && temp < 25) {
-            return "a half-sleeved shirt or nice looking T-shirt and  shorts or tracks.";
-        } else if (temp >= 25 && temp < 30) {
-            return "a normal t-shirt and joggers or shorts.";
-        } else {
-            return "light weight shorts, shirts or shirtless.";
-        }
-    }
-	
-//  Method used to express the type of weather/ weather ccondition, matching with the provided location and temprature.
-	private static String getWeatherCondition(double temperature) {
-        if (temperature < 0) {
-            return "freezing";
-        } else if (temperature >= 0 && temperature < 10) {
-            return "very cold";
-        } else if (temperature >= 10 && temperature < 20) {
-            return "cold";
-        } else if (temperature >= 20 && temperature < 30) {
-            return "pleasent";
-        } else {
-            return "very hot";
-        }
-    }
 
-	
-=======
-
->>>>>>> SD2_Chatbot_Nootnoot/src/main/java/Code_Review_1_Nootnoot.java
 	//This method fetches weather data from the OpenWeatherMap.org API website and returns the weather date in String format 
 	//It also handles any exceptions that may occur while trying to fetch the data
 	private static String fetchWeatherData(String city, String open_weather_api_key) {
