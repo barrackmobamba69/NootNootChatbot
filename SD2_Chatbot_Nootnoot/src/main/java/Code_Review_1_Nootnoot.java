@@ -33,12 +33,12 @@ public class Code_Review_1_Nootnoot {
 	//------- All the methods are called below ---------
 	
 	//This method greets the user by printing welcoming message
-	private static void welcomeMessage() {
+	public static void welcomeMessage() {
 	    System.out.println("Welcome to the Weather ChatBot! \nHi my name's Nootnoot");
 	}
 
 	//This method uses Scanner object to ask the user to input the city name
-	private static String inputLocation() {
+	public static String inputLocation() {
 	    Scanner scan = new Scanner(System.in); //Created a scanner object
 	    System.out.println("What location would you like to know the weather for? "); //Printing users input
 	    return scan.nextLine(); //Reading users' input
