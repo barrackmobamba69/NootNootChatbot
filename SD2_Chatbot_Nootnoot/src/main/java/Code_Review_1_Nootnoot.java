@@ -26,6 +26,9 @@ public class Code_Review_1_Nootnoot {
 
             String weatherData = fetchWeatherData(city, open_weather_api_key); //Calling fetchWeatherData() method
             String temperature = extractTemperatureInCelsius(weatherData); //Calling extractTemperature() method
+                   
+          	 //Converting the temperature string to double.	            	
+           	double temp = Double.parseDouble(temperature);
 
             //We print out the temperature in Celsius degrees
             System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
