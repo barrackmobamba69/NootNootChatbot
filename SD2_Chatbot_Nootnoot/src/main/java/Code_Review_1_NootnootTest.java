@@ -6,6 +6,8 @@ import java.util.Scanner;
 import java.io.PrintStream;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
+import java.time.Duration;
+
 
 public class Code_Review_1_NootnootTest {
 
@@ -26,6 +28,15 @@ public class Code_Review_1_NootnootTest {
 	    Scanner scan = new Scanner(System.in);
 	    String expected = "New York";
 	    assertEquals(expected, Code_Review_1_Nootnoot.inputLocation());
+	}
+
+	
+	@Test
+	public void testEndConversationQuit() {
+	    String input = "quit";
+	    String inputTwo = "q";
+	    assertTrue(Code_Review_1_Nootnoot.endConversation(input));
+	    assertTrue(Code_Review_1_Nootnoot.endConversation(inputTwo));
 	}
 
 
