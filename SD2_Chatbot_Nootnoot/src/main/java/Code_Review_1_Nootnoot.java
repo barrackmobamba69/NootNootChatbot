@@ -11,6 +11,9 @@ public class Code_Review_1_Nootnoot {
     
 	public static void main(String[] args) throws Exception {
         welcomeMessage(); //Calling welcomeMessage() method
+        
+		// Adding scanner to read input from standard input stream
+		Scanner scanner = new Scanner(System.in);
 
         while (true) {
             String city = inputLocation(); //Calling inputLocation() method
