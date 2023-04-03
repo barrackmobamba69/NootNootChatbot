@@ -1,3 +1,4 @@
+//Import statements
 import static org.junit.Assert.*;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
@@ -5,12 +6,10 @@ import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 import java.io.PrintStream;
 import static org.junit.Assert.assertEquals;
-import org.junit.Test;
-import java.time.Duration;
 
 
 public class Code_Review_1_NootnootTest {
-
+	
 	@Test
 	public void testWelcomeMessage() {
 	    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -42,7 +41,7 @@ public class Code_Review_1_NootnootTest {
 	
 	@Test
 	public void testFetchWeatherData() {
-	    String city = "New York";
+	    String city = "Dublin";
 	    String weatherData = Code_Review_1_Nootnoot.fetchWeatherData(city, Code_Review_1_Nootnoot.OPEN_WEATHER_API_KEY);
 	    assertTrue(weatherData.contains("weather") && weatherData.contains("main") && weatherData.contains("temp"));
 	}
@@ -54,7 +53,6 @@ public class Code_Review_1_NootnootTest {
 	    String expected = "16.57";
 	    assertEquals(expected, Code_Review_1_Nootnoot.extractTemperatureInCelsius(weatherData));
 	}
-
-
+	
 }
 
