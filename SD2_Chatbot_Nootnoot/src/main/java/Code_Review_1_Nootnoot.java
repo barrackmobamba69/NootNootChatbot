@@ -101,6 +101,22 @@ public class Code_Review_1_Nootnoot {
         }
     }
 	
+//  Method used to express the type of weather/ weather ccondition, matching with the provided location and temprature.
+	private static String getWeatherCondition(double temperature) {
+        if (temperature < 0) {
+            return "freezing";
+        } else if (temperature >= 0 && temperature < 10) {
+            return "very cold";
+        } else if (temperature >= 10 && temperature < 20) {
+            return "cold";
+        } else if (temperature >= 20 && temperature < 30) {
+            return "pleasent";
+        } else {
+            return "very hot";
+        }
+    }
+
+	
 	//This method fetches weather data from the OpenWeatherMap.org API website and returns the weather date in String format 
 	//It also handles any exceptions that may occur while trying to fetch the data
 	private static String fetchWeatherData(String city, String open_weather_api_key) {
