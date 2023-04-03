@@ -44,11 +44,11 @@ public class Code_Review_1_Nootnoot {
             
             //printing out the clothing suggestion
             System.out.println("The best choice of clothing is " + clothingSuggestion);
-            
-            //closing the scanner
-            scanner.close();
-
         }
+        
+        //closing the scanner
+        scanner.close();
+
 	}
 
 	//------- All the methods are called below ---------
