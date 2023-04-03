@@ -35,12 +35,15 @@ public class Code_Review_1_Nootnoot {
             
             //Calling the clothingSuggestion method and saving its results in a string variable.
             String clothingSuggestion = suggestClothing(temperature);
-            
-            //Printing out the weather condition
-            System.out.println("According to the reports, the weather looks like " + weatherCondition);
 
             //We print out the temperature in Celsius degrees
             System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
+            
+            //Printing out the weather condition
+            System.out.println("According to the reports, the weather looks like " + weatherCondition);
+            
+            //printing out the clothing suggestion
+            System.out.println("The best choice of clothing is " + clothingSuggestion);
 
         }
 	}
