@@ -30,8 +30,11 @@ public class Code_Review_1_Nootnoot {
           	 //Converting the temperature string to double.	            	
            	double temp = Double.parseDouble(temperature);
            	
-        	//Calling the weatherCondition method and also saaving its results in a variable of string.
+        	//Calling the weatherCondition method and also saving its results in a variable of string.
             String weatherCondition = getWeatherCondition(Double.parseDouble(temperature));
+            
+            //Calling the clothingSuggestion method and saving its results in a string variable.
+            String clothingSuggestion = suggestClothing(temperature);
 
             //We print out the temperature in Celsius degrees
             System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
