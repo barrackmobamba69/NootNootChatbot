@@ -83,6 +83,24 @@ public class Code_Review_1_Nootnoot {
 	    return false;
 	}
 	
+//	Code or method, that suggest the type of cloth to wear while going outside, according to the temprature of the area.
+	private static String suggestClothing(String temperature) {
+        double temp = Double.parseDouble(temperature);
+        if (temp < 5) {
+            return "a heavy coat or jacket, thick gloves, a winter scarf, and a hat that could cover your ears.";
+        } else if (temp >= 5 && temp < 10) {
+            return "a warm coat, gloves, and hat if required.";
+        } else if (temp >= 10 && temp < 20) {
+            return "a jacket, a hoodie or a sweater.";
+        } else if (temp >= 20 && temp < 25) {
+            return "a half-sleeved shirt or nice looking T-shirt and  shorts or tracks.";
+        } else if (temp >= 25 && temp < 30) {
+            return "a normal t-shirt and joggers or shorts.";
+        } else {
+            return "light weight shorts, shirts or shirtless.";
+        }
+    }
+	
 	//This method fetches weather data from the OpenWeatherMap.org API website and returns the weather date in String format 
 	//It also handles any exceptions that may occur while trying to fetch the data
 	private static String fetchWeatherData(String city, String open_weather_api_key) {
