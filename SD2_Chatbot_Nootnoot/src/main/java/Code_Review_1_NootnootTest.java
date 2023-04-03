@@ -48,5 +48,13 @@ public class Code_Review_1_NootnootTest {
 	}
 
 
+	@Test
+	public void testExtractTemperatureInCelsius() {
+	    String weatherData = "{\"coord\":{\"lon\":-73.99,\"lat\":40.73},\"weather\":[{\"id\":800,\"main\":\"Clear\",\"description\":\"clear sky\",\"icon\":\"01d\"}],\"base\":\"stations\",\"main\":{\"temp\":289.72,\"feels_like\":287.95,\"temp_min\":288.15,\"temp_max\":291.48,\"pressure\":1017,\"humidity\":42},\"visibility\":10000,\"wind\":{\"speed\":2.6,\"deg\":240},\"clouds\":{\"all\":1},\"dt\":1605761370,\"sys\":{\"type\":1,\"id\":4610,\"country\":\"US\",\"sunrise\":1605737093,\"sunset\":1605770379},\"timezone\":-18000,\"id\":5128581,\"name\":\"New York\",\"cod\":200}";
+	    String expected = "16.57";
+	    assertEquals(expected, Code_Review_1_Nootnoot.extractTemperatureInCelsius(weatherData));
+	}
+
+
 }
 
