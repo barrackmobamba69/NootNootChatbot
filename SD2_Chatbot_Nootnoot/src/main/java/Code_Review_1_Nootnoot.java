@@ -45,7 +45,7 @@ public class Code_Review_1_Nootnoot {
 	}
 	
 	//This method prints a message and simulates processing time by pausing execution for 2 seconds
-	private static void delayedExecution() throws InterruptedException{
+	public static void delayedExecution() throws InterruptedException{
     	System.out.println("\nPlease hang on a second....."); //Printing user to wait for couple of seconds
     	//This pauses the execution of the thread for 2000 milliseconds
     	//From this feature creates a more realistic experience for the user by introducing a delay that simulates actual processing time
@@ -54,7 +54,7 @@ public class Code_Review_1_Nootnoot {
 
 	//This code represents how the user can end the conversation with Nootnoot
 	//This code functionality lets the user too quit the Nootnoot chatbot via "quit" or "q" commands
-	private static boolean endConversation(String city) {
+	public static boolean endConversation(String city) {
 	    if (city.equalsIgnoreCase("quit") || city.equalsIgnoreCase("q")) {
 	        System.out.println("Thank you and have a great day :)");
 	        return true;
@@ -64,7 +64,7 @@ public class Code_Review_1_Nootnoot {
 	
 	//This method fetches weather data from the OpenWeatherMap.org API website and returns the weather date in String format 
 	//It also handles any exceptions that may occur while trying to fetch the data
-	private static String fetchWeatherData(String city, String open_weather_api_key) {
+	public static String fetchWeatherData(String city, String open_weather_api_key) {
 	    StringBuilder weatherDataString = new StringBuilder();
     	//Implementing try-catch block code for handling any kind of errors that occur during I/O operations
 	    try {
@@ -89,7 +89,7 @@ public class Code_Review_1_Nootnoot {
 
     //This method extracts the weather in degrees Celsius from the raw weather data
     //Now the extracted temperature value is converted into String format with 2 decimal places.
-	private static String extractTemperatureInCelsius(String weatherData) {
+	public static String extractTemperatureInCelsius(String weatherData) {
 		int startIndex = weatherData.indexOf("temp\":") + 6; //Getting start and end index
 	    int endIndex = weatherData.indexOf(",", startIndex);
 	    double kelvinTemperature = Double.parseDouble(weatherData.substring(startIndex, endIndex));
