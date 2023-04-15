@@ -5,9 +5,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 
-public class Code_Review_1_Nootnoot {
+public class Code_Review_2_Nootnoot {
 
-    private static final String open_weather_api_key = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
+    public static final String open_weather_api_key = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
     
 	public static void main(String[] args) throws Exception {
         welcomeMessage(); //Calling welcomeMessage() method
@@ -26,7 +26,13 @@ public class Code_Review_1_Nootnoot {
 
             String weatherData = fetchWeatherData(city, open_weather_api_key); //Calling fetchWeatherData() method
             String temperature = extractTemperatureInCelsius(weatherData); //Calling extractTemperature() method
-                   
+            
+            //Added a validation to ensure that the temperature value is not empty before parsing it into a double
+            if(temperature.isEmpty()) {
+                System.out.println("Please try again.");
+                continue;
+            }
+
           	 //Converting the temperature string to double.	            	
            	double temp = Double.parseDouble(temperature);
            	
@@ -35,7 +41,7 @@ public class Code_Review_1_Nootnoot {
             
             //Calling the clothingSuggestion method and saving its results in a string variable.
             String clothingSuggestion = suggestClothing(temperature);
-
+            
             //We print out the temperature in Celsius degrees
             System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
             
@@ -54,20 +60,20 @@ public class Code_Review_1_Nootnoot {
 	//------- All the methods are called below ---------
 	
 	//This method greets the user by printing welcoming message
-	private static void welcomeMessage() {
+	public static void welcomeMessage() {
 	    System.out.println("Welcome to the Weather ChatBot! \nHi my name's Nootnoot");
 	}
 
 	//This method uses Scanner object to ask the user to input the city name
-	private static String inputLocation() {
+	public static String inputLocation() {
 	    Scanner scan = new Scanner(System.in); //Created a scanner object
-	    System.out.println("What location would you like to know the weather for? "); //Printing users input
+	    System.out.println("\nWhat location would you like to know the weather for? "); //Printing users input
 	    return scan.nextLine(); //Reading users' input
 	}
 	
 	//This method prints a message and simulates processing time by pausing execution for 2 seconds
-	private static void delayedExecution() throws InterruptedException{
-    	System.out.println("\nPlease hang on a second....."); //Printing user to wait for couple of seconds
+	public static void delayedExecution() throws InterruptedException{
+    	System.out.println("\nPlease hang on a second..."); //Printing user to wait for couple of seconds
     	//This pauses the execution of the thread for 2000 milliseconds
     	//From this feature creates a more realistic experience for the user by introducing a delay that simulates actual processing time
     	Thread.sleep(2000); //Waiting for 2 seconds before printing the weather
@@ -75,7 +81,7 @@ public class Code_Review_1_Nootnoot {
 
 	//This code represents how the user can end the conversation with Nootnoot
 	//This code functionality lets the user too quit the Nootnoot chatbot via "quit" or "q" commands
-	private static boolean endConversation(String city) {
+	public static boolean endConversation(String city) {
 	    if (city.equalsIgnoreCase("quit") || city.equalsIgnoreCase("q")) {
 	        System.out.println("Thank you and have a great day :)");
 	        return true;
@@ -88,38 +94,46 @@ public class Code_Review_1_Nootnoot {
         double temp = Double.parseDouble(temperature);
         if (temp < 5) {
             return "a heavy coat or jacket, thick gloves, a winter scarf, and a hat that could cover your ears.";
-        } else if (temp >= 5 && temp < 10) {
+        } 
+        else if (temp >= 5 && temp < 10) {
             return "a warm coat, gloves, and hat if required.";
-        } else if (temp >= 10 && temp < 20) {
+        } 
+        else if (temp >= 10 && temp < 20) {
             return "a jacket, a hoodie or a sweater.";
-        } else if (temp >= 20 && temp < 25) {
+        } 
+        else if (temp >= 20 && temp < 25) {
             return "a half-sleeved shirt or nice looking T-shirt and  shorts or tracks.";
-        } else if (temp >= 25 && temp < 30) {
+        } 
+        else if (temp >= 25 && temp < 30) {
             return "a normal t-shirt and joggers or shorts.";
-        } else {
+        } 
+        else {
             return "light weight shorts, shirts or shirtless.";
         }
     }
 	
 //  Method used to express the type of weather/ weather ccondition, matching with the provided location and temprature.
-	private static String getWeatherCondition(double temperature) {
+	public static String getWeatherCondition(double temperature) {
         if (temperature < 0) {
-            return "freezing";
-        } else if (temperature >= 0 && temperature < 10) {
-            return "very cold";
-        } else if (temperature >= 10 && temperature < 20) {
-            return "cold";
-        } else if (temperature >= 20 && temperature < 30) {
-            return "pleasent";
-        } else {
-            return "very hot";
+            return "freezing.";
+        } 
+        else if (temperature >= 0 && temperature < 10) {
+            return "very cold.";
+        } 
+        else if (temperature >= 10 && temperature < 20) {
+            return "cold.";
+        } 
+        else if (temperature >= 20 && temperature < 30) {
+            return "pleasant.";
+        } 
+        else {
+            return "very hot.";
         }
     }
 
-	
 	//This method fetches weather data from the OpenWeatherMap.org API website and returns the weather date in String format 
 	//It also handles any exceptions that may occur while trying to fetch the data
-	private static String fetchWeatherData(String city, String open_weather_api_key) {
+	public static String fetchWeatherData(String city, String open_weather_api_key) {
 	    StringBuilder weatherDataString = new StringBuilder();
     	//Implementing try-catch block code for handling any kind of errors that occur during I/O operations
 	    try {
@@ -137,19 +151,23 @@ public class Code_Review_1_Nootnoot {
 	    }
         //This block of code handles any exceptions that occur while trying to fetch weather data from OpenWeatherMap.org api website
 	    catch (Exception e) {
-	        System.out.println("\nOops!! Error fetching weather data. Please try again."); //Prints error statement
+	        System.out.println("\nOops! Error fetching weather data."); //Prints error statement
 	    }
 	    return weatherDataString.toString(); //Returns the weather data into string format
 	}
 
     //This method extracts the weather in degrees Celsius from the raw weather data
     //Now the extracted temperature value is converted into String format with 2 decimal places.
-	private static String extractTemperatureInCelsius(String weatherData) {
-		int startIndex = weatherData.indexOf("temp\":") + 6; //Getting start and end index
+	 public static String extractTemperatureInCelsius(String weatherData) {
+	    int startIndex = weatherData.indexOf("temp\":");
+	    if (startIndex < 0) { //Checking if the 'temp' value exists or not
+	        return ""; //Return an empty string as a fallback
+	    }
+	    startIndex += 6; //Getting start and end index
 	    int endIndex = weatherData.indexOf(",", startIndex);
 	    double kelvinTemperature = Double.parseDouble(weatherData.substring(startIndex, endIndex));
-	    double celsiusTemperature  = kelvinTemperature - 273.15; //Converting Kelvin to Celsius, because Celsius scale is also commonly 
+	    double celsiusTemperature = kelvinTemperature - 273.15; //Converting Kelvin to Celsius, because Celsius scale is commonly used
 	    return String.format("%.2f", celsiusTemperature); //Returns the temperature as a String with 2 decimal places
-	}
+	 }
 
 }
