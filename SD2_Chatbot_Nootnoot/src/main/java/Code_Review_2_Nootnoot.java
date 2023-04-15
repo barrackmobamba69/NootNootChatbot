@@ -26,9 +26,10 @@ public class Code_Review_2_Nootnoot {
 
             String weatherData = fetchWeatherData(city, open_weather_api_key); //Calling fetchWeatherData() method
             String temperature = extractTemperatureInCelsius(weatherData); //Calling extractTemperature() method
-            
+            String precipitationChance = extractPrecipitationChance(weatherData);
+
             //Added a validation to ensure that the temperature value is not empty before parsing it into a double
-            if(temperature.isEmpty()) {
+            if(temperature.isEmpty() || precipitationChance.isEmpty()) {
                 System.out.println("Please try again.");
                 continue;
             }
@@ -48,6 +49,9 @@ public class Code_Review_2_Nootnoot {
             //Printing out the weather condition
             System.out.println("According to the reports, the weather looks like " + weatherCondition);
             
+            //
+            System.out.println("The chance of precipitation is " + precipitationChance);
+
             //printing out the clothing suggestion
             System.out.println("The best choice of clothing is " + clothingSuggestion);
         }
@@ -169,5 +173,9 @@ public class Code_Review_2_Nootnoot {
 	    double celsiusTemperature = kelvinTemperature - 273.15; //Converting Kelvin to Celsius, because Celsius scale is commonly used
 	    return String.format("%.2f", celsiusTemperature); //Returns the temperature as a String with 2 decimal places
 	 }
-
+	 
+	 public static String extractPrecipitationChance(String weatherData) {
+		 int startIndex = weatherData.indexOf("pop\":");
+			 return "Nootnoot says:";
+	 }
 }
