@@ -12,7 +12,7 @@ public class Code_Review_2_Nootnoot {
 	public static void main(String[] args) throws Exception {
         welcomeMessage(); //Calling welcomeMessage() method
         
-		// Adding scanner to read input from standard input stream
+		//Adding scanner to read input from standard input stream
 		Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -116,7 +116,7 @@ public class Code_Review_2_Nootnoot {
         }
     }
 	
-//  Method used to express the type of weather/ weather ccondition, matching with the provided location and temprature.
+	//Method used to express the type of weather/ weather ccondition, matching with the provided location and temprature.
 	public static String getWeatherCondition(double temperature) {
         if (temperature < 0) {
             return "freezing.";
@@ -174,8 +174,42 @@ public class Code_Review_2_Nootnoot {
 	    return String.format("%.2f", celsiusTemperature); //Returns the temperature as a String with 2 decimal places
 	 }
 	 
+	 //This method extracts the chance of precipitation from the weather API
 	 public static String extractPrecipitationChance(String weatherData) {
-		 int startIndex = weatherData.indexOf("pop\":");
-			 return "Nootnoot says:";
+	     //Find the start index of the "pop" key in the JSON string
+		 int popIndex = weatherData.indexOf("pop\":");
+		 
+		 //If the "pop" key is not present, extract the description and check if it contains rain or snow
+		 if (popIndex < 0) { 
+	    	 String description = extractDescription(weatherData);
+	         if(description.toLowerCase().contains("rain")) {
+	        	 return "100%";
+	         } else if(description.toLowerCase().contains("snow")) {
+	        	 return "90%";
+	         } else {
+	        	 return "";
+	         }
+	     }
+	    
+	    //Extract the precipitation chance value from the "pop" key
+	    int startIndex = popIndex + 5;
+	    int endIndex = weatherData.indexOf(",", startIndex);
+	    String precipitationChance = weatherData.substring(startIndex, endIndex).trim();
+	    return precipitationChance + "%";
+	 }
+	 
+	 //This method extracts the weather description in string and sends it to extractPrecipitationChance method.
+	 public static String extractDescription(String weatherData) {
+		    //Find the start and end indices of the "description" key
+		    int startIndex = weatherData.indexOf("description\":");
+		    if (startIndex < 0) { 
+		        return ""; 
+		    }
+		    startIndex += 14; 
+		    int endIndex = weatherData.indexOf("\"", startIndex);
+		    
+		    //Now returning the weather description string
+		    String description = weatherData.substring(startIndex, endIndex).trim();
+		    return description;
 	 }
 }
