@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
+import javax.swing.*;
 
 public class Code_Review_2_Nootnoot {
 
@@ -11,11 +12,13 @@ public class Code_Review_2_Nootnoot {
     
 	public static void main(String[] args) throws Exception {
         welcomeMessage(); //Calling welcomeMessage() method
+        nootnootPictureGreeting(); //Calling nootnoot
         
 		//Adding scanner to read input from standard input stream
 		Scanner scanner = new Scanner(System.in);
 
         while (true) {
+        	
             String city = inputLocation(); //Calling inputLocation() method
             
             delayedExecution(); //Calling pauseExecution() method
@@ -35,7 +38,7 @@ public class Code_Review_2_Nootnoot {
                 continue;
             }
 
-          	 //Converting the temperature string to double.	            	
+          	//Converting the temperature string to double.	            	
            	double temp = Double.parseDouble(temperature);
            	
         	//Calling the weatherCondition method and also saving its results in a variable of string.
@@ -85,6 +88,17 @@ public class Code_Review_2_Nootnoot {
     	//This pauses the execution of the thread for 2000 milliseconds
     	//From this feature creates a more realistic experience for the user by introducing a delay that simulates actual processing time
     	Thread.sleep(2000); //Waiting for 2 seconds before printing the weather
+	}
+
+	//This method displays a friendly picture of Nootnoot to welcome the user
+	public static String nootnootPictureGreeting() {
+		ImageIcon icon = new ImageIcon("nootnoot.jpg"); // Load the image of clouds
+	    JLabel label = new JLabel(icon); // Create a new JLabel with the image
+	    JFrame frame = new JFrame("Weather"); // Create a new JFrame
+	    frame.add(label); // Add the JLabel to the JFrame
+	    frame.pack(); // Resize the JFrame to fit the image
+	    frame.setVisible(true); // Display the JFrame
+	    return "Hi!";
 	}
 
 	//This code represents how the user can end the conversation with Nootnoot
@@ -156,6 +170,15 @@ public class Code_Review_2_Nootnoot {
 	            weatherDataString.append(line);
 	        }
 	        reader.close(); //Close BufferedReader object
+	        
+	        int start = weatherDataString.indexOf("main\":");
+	        if (start < 0) {
+	            return ""; // Return an empty string if the weather data does not exist
+	        }
+	        start += 7;
+	        int end = weatherDataString.indexOf(",", start);
+	        String weatherCondition = weatherDataString.substring(start, end).replaceAll("\"", "");
+
 	    }
         //This block of code handles any exceptions that occur while trying to fetch weather data from OpenWeatherMap.org api website
 	    catch (Exception e) {
@@ -215,6 +238,6 @@ public class Code_Review_2_Nootnoot {
 	     startIndex += 16; //Getting start and end index
 	     int endIndex = weatherData.indexOf(",", startIndex);
 	     double windSpeed = Double.parseDouble(weatherData.substring(startIndex, endIndex));
-	     return String.format("%.2f", windSpeed) + " m/s"; //Returns the wind speed as a String with 2 decimal places and appends unit 'm/s'
+	     return String.format("%.2f", windSpeed) + " km/h"; //Returns the wind speed in'km/h'
 	 }
 }
