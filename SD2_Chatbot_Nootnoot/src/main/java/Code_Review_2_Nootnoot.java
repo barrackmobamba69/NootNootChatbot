@@ -135,23 +135,23 @@ public class Code_Review_2_Nootnoot {
     //Code or method, that suggest the type of cloth to wear while going outside, according to the temprature of the area.
 	public static String suggestClothing(String temperature) {
         double temp = Double.parseDouble(temperature);
-        if (temp < 5) {
-            return "a heavy coat or jacket, thick gloves, a winter scarf, and a hat that could cover your ears.";
+        if (temp < 0) {
+            return "a heavy coat, thick gloves, a winter scarf, and a hat that could cover your ears.";
         } 
-        else if (temp >= 5 && temp < 10) {
-            return "a warm coat, gloves, and hat if required.";
+        else if (temp >= 0 && temp < 10) {
+            return "a warm coat, gloves, and a hat if required.";
         } 
-        else if (temp >= 10 && temp < 20) {
+        else if (temp >= 10 && temp < 15) {
             return "a jacket, a hoodie or a sweater.";
         } 
-        else if (temp >= 20 && temp < 25) {
-            return "a half-sleeved shirt or nice looking T-shirt and  shorts or tracks.";
+        else if (temp >= 15 && temp < 20) {
+            return "a light jacket or a long-sleeved shirt with jeans.";
         } 
-        else if (temp >= 25 && temp < 30) {
-            return "a normal t-shirt and joggers or shorts.";
+        else if (temp >= 20 && temp < 25) {
+            return "a t-shirt with shorts or a skirt.";
         } 
         else {
-            return "light weight shorts, shirts or shirtless.";
+            return "light weight clothing such as a tank top and shorts or a summer dress.";
         }
     }
 	
