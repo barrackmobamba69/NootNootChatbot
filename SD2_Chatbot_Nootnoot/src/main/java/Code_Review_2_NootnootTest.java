@@ -31,29 +31,29 @@ public class Code_Review_2_NootnootTest {
 	    String actual = Code_Review_2_Nootnoot.inputLocation();
 	    assertEquals(expected, actual);
     }
-//	
-//	@Test
-//	public void testEndConversationQuit() {
-//	    String input = "quit";
-//	    String inputTwo = "q";
-//	    assertEquals(true, Code_Review_2_Nootnoot.endConversation(input));
-//	    assertEquals(true, Code_Review_2_Nootnoot.endConversation(inputTwo));
-//	}
-//
-//
-//    @Test
-//    public void test_getWeatherCondition() {
-//        String expected = "Rainy";
-//        String actual = Code_Review_2_Nootnoot.getWeatherCondition(16);
-//        assertEquals(expected, actual);
-//    }
-//
-//    @Test
-//    public void test_suggestClothing() {
-//        String expected = "It's quite warm, you can wear shorts and a t-shirt.";
-//        String actual = Code_Review_2_Nootnoot.suggestClothing("23.5");
-//        assertEquals(expected, actual);
-//    }
+	
+	@Test
+	public void testEndConversationQuit() {
+	    String input = "quit";
+	    String inputTwo = "q";
+	    assertEquals(true, Code_Review_2_Nootnoot.endConversation(input));
+	    assertEquals(true, Code_Review_2_Nootnoot.endConversation(inputTwo));
+	}
+
+
+    @Test
+    public void test_getWeatherCondition() {
+        String expected = "Rainy";
+        String actual = Code_Review_2_Nootnoot.getWeatherCondition(16);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test_suggestClothing() {
+        String expected = "It's quite warm, you can wear shorts and a t-shirt.";
+        String actual = Code_Review_2_Nootnoot.suggestClothing("23.5");
+        assertEquals(expected, actual);
+    }
 
 }
 
