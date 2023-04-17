@@ -79,14 +79,14 @@ public class Code_Review_2_NootnootTest {
 	        assertEquals(expected, actual);
 	    }
 
-    @Test
+    @Test // Function used to describe the weather codition by taking the weather data code.
     public void test_getWeatherCondition() {
         String expected = "Rainy";
         String actual = Code_Review_2_Nootnoot.getWeatherCondition(16);
         assertEquals(expected, actual);
     }
 
-    @Test
+    @Test// Function that takes in the type of weather from weather data and suggests the type of best form of clothing. 
     public void test_suggestClothing() {
         String expected = "It's quite warm, you can wear shorts and a t-shirt.";
         String actual = Code_Review_2_Nootnoot.suggestClothing("23.5");

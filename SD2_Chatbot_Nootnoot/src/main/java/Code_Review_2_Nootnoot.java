@@ -126,7 +126,7 @@ public class Code_Review_2_Nootnoot {
 	}
 	
 //	Code or method, that suggest the type of cloth to wear while going outside, according to the temprature of the area.
-	private static String suggestClothing(String temperature) {
+	static String suggestClothing(String temperature) {
         double temp = Double.parseDouble(temperature);
         if (temp < 5) {
             return "a heavy coat or jacket, thick gloves, a winter scarf, and a hat that could cover your ears.";
