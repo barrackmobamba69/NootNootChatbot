@@ -62,6 +62,14 @@ public class Code_Review_2_NootnootTest {
 	    String expected = "16.57";
 	    assertEquals(expected, Code_Review_2_Nootnoot.extractTemperatureInCelsius(weatherData));
 	}
+	
+	 @Test // function to extract the chance of precipitation by taking a weather data.
+	    public void test_extractPrecipitationChance() {
+	        String weatherData = "{\"main\":{\"temp\":288.7,\"feels_like\":288.7,\"pressure\":1024,\"humidity\":93,\"temp_min\":288.7,\"temp_max\":288.7,\"sea_level\":1024,\"grnd_level\":1015},\"clouds\":{\"all\":75},\"wind\":{\"speed\":4.63,\"deg\":270},\"precipitation\":{\"mode\":\"no\"},\"weather\":[{\"id\":803,\"main\":\"Clouds\",\"description\":\"broken clouds\",\"icon\":\"04d\"}]}";
+	        String expected = "75";
+	        String actual = Code_Review_2_Nootnoot.extractPrecipitationChance(weatherData);
+	        assertEquals(expected, actual);
+	    }
 
     @Test
     public void test_getWeatherCondition() {
