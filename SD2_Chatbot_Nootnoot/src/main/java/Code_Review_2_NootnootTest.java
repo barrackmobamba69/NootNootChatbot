@@ -39,6 +39,38 @@ public class Code_Review_2_NootnootTest {
 	    assertEquals(true, Code_Review_2_Nootnoot.endConversation(input));
 	    assertEquals(true, Code_Review_2_Nootnoot.endConversation(inputTwo));
 	}
+	
+	@Test
+	public void testFetchWeatherData() {
+	    String city = "Dublin";
+	    String weatherData = Code_Review_2_Nootnoot.fetchWeatherData(city, Code_Review_2_Nootnoot.open_weather_api_key);
+	    assertTrue(weatherData.contains("weather") && weatherData.contains("main") && weatherData.contains("temp"));
+	}
+
+
+    @Test
+    public void test_extractTemperatureInCelsius() {
+        String weatherData = "{\"main\":{\"temp\":288.7,\"feels_like\":288.7,\"pressure\":1024,\"humidity\":93,\"temp_min\":288.7,\"temp_max\":288.7,\"sea_level\":1024,\"grnd_level\":1015}}";
+        String expected = "15.6";
+        String actual = Code_Review_2_Nootnoot.extractTemperatureInCelsius(weatherData);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test_extractPrecipitationChance() {
+        String weatherData = "{\"main\":{\"temp\":288.7,\"feels_like\":288.7,\"pressure\":1024,\"humidity\":93,\"temp_min\":288.7,\"temp_max\":288.7,\"sea_level\":1024,\"grnd_level\":1015},\"clouds\":{\"all\":75},\"wind\":{\"speed\":4.63,\"deg\":270},\"precipitation\":{\"mode\":\"no\"},\"weather\":[{\"id\":803,\"main\":\"Clouds\",\"description\":\"broken clouds\",\"icon\":\"04d\"}]}";
+        String expected = "75";
+        String actual = Code_Review_2_Nootnoot.extractPrecipitationChance(weatherData);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void test_extractWind() {
+        String weatherData = "{\"main\":{\"temp\":288.7,\"feels_like\":288.7,\"pressure\":1024,\"humidity\":93,\"temp_min\":288.7,\"temp_max\":288.7,\"sea_level\":1024,\"grnd_level\":1015},\"clouds\":{\"all\":75},\"wind\":{\"speed\":4.63,\"deg\":270},\"precipitation\":{\"mode\":\"no\"},\"weather\":[{\"id\":803,\"main\":\"Clouds\",\"description\":\"broken clouds\",\"icon\":\"04d\"}]}";
+        String expected = "4.63 m/s";
+        String actual = Code_Review_2_Nootnoot.extractWind(weatherData);
+        assertEquals(expected, actual);
+    }
 
 
     @Test
