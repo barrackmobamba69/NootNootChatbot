@@ -28,12 +28,18 @@ public class Code_Review_2_Nootnoot {
                 break;
             }
             
+            //Calling plan function that takes care of the user requirement when user inputs 5 destinations 
+            if (city.equalsIgnoreCase("plan")) {
+                plan();
+                continue;
+            }
+
+            
             //Calling the function which helps the user by showing all the possible chatbot commands
             if (city.equalsIgnoreCase("help")) {
                 showCommands();
                 continue;
             }
-
 
             String weatherData = fetchWeatherData(city, open_weather_api_key); //Calling fetchWeatherData() method
             String temperature = extractTemperatureInCelsius(weatherData); //Calling extractTemperature() method
@@ -102,6 +108,7 @@ public class Code_Review_2_Nootnoot {
 	public static void showCommands() {
 		System.out.println("Here are the available commands:");
 		System.out.println("- Type the name of a city to get its weather");
+		System.out.println("- Type 'plan' to plan your trip");
 		System.out.println("- Type 'quit' or 'q' to exit");
 		}
 	
@@ -126,26 +133,26 @@ public class Code_Review_2_Nootnoot {
 	    return false;
 	}
 	
-//	Code or method, that suggest the type of cloth to wear while going outside, according to the temprature of the area.
-	private static String suggestClothing(String temperature) {
+    //Code or method, that suggest the type of cloth to wear while going outside, according to the temprature of the area.
+	public static String suggestClothing(String temperature) {
         double temp = Double.parseDouble(temperature);
-        if (temp < 5) {
-            return "a heavy coat or jacket, thick gloves, a winter scarf, and a hat that could cover your ears.";
+        if (temp < 0) {
+            return "You'll need a heavy coat or jacket, thick gloves, a winter scarf, and a hat that covers your ears.";
         } 
-        else if (temp >= 5 && temp < 10) {
-            return "a warm coat, gloves, and hat if required.";
+        else if (temp >= 0 && temp < 10) {
+            return "You'll need a warm coat, gloves, and hat if required.";
         } 
-        else if (temp >= 10 && temp < 20) {
-            return "a jacket, a hoodie or a sweater.";
+        else if (temp >= 10 && temp < 15) {
+            return "You'll need a jacket, a hoodie, or a sweater.";
+        } 
+        else if (temp >= 15 && temp < 20) {
+            return "You'll be comfortable in a half-sleeved shirt or nice-looking t-shirt and shorts or tracks.";
         } 
         else if (temp >= 20 && temp < 25) {
-            return "a half-sleeved shirt or nice looking T-shirt and  shorts or tracks.";
-        } 
-        else if (temp >= 25 && temp < 30) {
-            return "a normal t-shirt and joggers or shorts.";
+            return "You'll be comfortable in a normal t-shirt and joggers or shorts.";
         } 
         else {
-            return "light weight shorts, shirts or shirtless.";
+            return "You'll need light-weight shorts, shirts or no shirt at all!";
         }
     }
 	
@@ -255,4 +262,39 @@ public class Code_Review_2_Nootnoot {
 	     double windSpeed = Double.parseDouble(weatherData.substring(startIndex, endIndex));
 	     return String.format("%.2f", windSpeed) + " km/h"; //Returns the wind speed in'km/h'
 	 }
+	 
+	 //This method is a plan-trip planner which provides clothing requirements based on the weather conditions in all 5 locations
+	 public static void plan() throws Exception {
+		    Scanner scanner = new Scanner(System.in);
+
+		    System.out.println("Welcome to the trip planner! Please enter 5 locations.");
+
+		    //initialize array to store locations
+		    String[] locations = new String[5];
+
+		    //get input for locations
+		    for (int i = 0; i < 5; i++) {
+		        System.out.print("Location #" + (i+1) + ": ");
+		        locations[i] = scanner.nextLine();
+		    }
+
+		    //loop through each location and get weather data
+		    for (int i = 0; i < 5; i++) {
+		        String weatherData = fetchWeatherData(locations[i], open_weather_api_key);
+		        String temperature = extractTemperatureInCelsius(weatherData);
+		        String precipitationChance = extractPrecipitationChance(weatherData);
+		        String wind = extractWind(weatherData);
+		        String clothingSuggestion = suggestClothing(temperature);
+
+		        System.out.println("===================================");
+		        System.out.println("Location: " + locations[i]);
+		        System.out.println("Temperature: " + temperature + " degrees Celsius");
+		        System.out.println("Precipitation Chance: " + precipitationChance);
+		        System.out.println("Wind Speed: " + wind);
+		        System.out.println("Clothing Suggestion: " + clothingSuggestion);
+		    }
+
+		    scanner.close();
+		}
 }
+
