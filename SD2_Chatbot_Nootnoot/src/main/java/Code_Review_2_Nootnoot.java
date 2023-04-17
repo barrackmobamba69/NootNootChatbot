@@ -8,64 +8,71 @@ import javax.swing.*;
 
 public class Code_Review_2_Nootnoot {
 
-  public static final String open_weather_api_key = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
-  
+    public static final String open_weather_api_key = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
+    
 	public static void main(String[] args) throws Exception {
-      welcomeMessage(); //Calling welcomeMessage() method
-      nootnootPictureGreeting(); //Calling nootnoot
-      
+        welcomeMessage(); //Calling welcomeMessage() method
+        nootnootPictureGreeting(); //Calling nootnoot
+        System.out.println("Type 'help' to show the command list");
+        
 		//Adding scanner to read input from standard input stream
 		Scanner scanner = new Scanner(System.in);
 
-      while (true) {
-      	
-          String city = inputLocation(); //Calling inputLocation() method
-          
-          delayedExecution(); //Calling pauseExecution() method
+        while (true) {
+        	
+            String city = inputLocation(); //Calling inputLocation() method
+            
+            delayedExecution(); //Calling pauseExecution() method
 
-          if (endConversation(city)) { //Calling endConversation() method
-              break;
-          }
+            if (endConversation(city)) { //Calling endConversation() method
+                break;
+            }
+            
+            //Calling the function which helps the user by showing all the possible chatbot commands
+            if (city.equalsIgnoreCase("help")) {
+                showCommands();
+                continue;
+            }
 
-          String weatherData = fetchWeatherData(city, open_weather_api_key); //Calling fetchWeatherData() method
-          String temperature = extractTemperatureInCelsius(weatherData); //Calling extractTemperature() method
-          String precipitationChance = extractPrecipitationChance(weatherData);
-          String wind = extractWind(weatherData);
+            String weatherData = fetchWeatherData(city, open_weather_api_key); //Calling fetchWeatherData() method
+            String temperature = extractTemperatureInCelsius(weatherData); //Calling extractTemperature() method
+            String precipitationChance = extractPrecipitationChance(weatherData);
+            String wind = extractWind(weatherData);
 
-          //Added a validation to ensure that the temperature value is not empty before parsing it into a double
-          if(temperature.isEmpty()) {
-              System.out.println("Please try again.");
-              continue;
-          }
+            //Added a validation to ensure that the temperature value is not empty before parsing it into a double
+            if(temperature.isEmpty()) {
+                System.out.println("Please try again.");
+                continue;
+            }
 
-        	//Converting the temperature string to double.	            	
-         	double temp = Double.parseDouble(temperature);
-         	
-      	  //Calling the weatherCondition method and also saving its results in a variable of string.
-          String weatherCondition = getWeatherCondition(Double.parseDouble(temperature));
-          
-          //Calling the clothingSuggestion method and saving its results in a string variable.
-          String clothingSuggestion = suggestClothing(temperature);
-          
-          //We print out the temperature in Celsius degrees
-          System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
-          
-          //Printing out the weather condition
-          System.out.println("According to the reports, the weather looks like " + weatherCondition);
-          
-          //Printing out the chance of precipitation
-          System.out.println("The chance of precipitation is " + precipitationChance);
+          	//Converting the temperature string to double.	            	
+           	double temp = Double.parseDouble(temperature);
+           	
+        	//Calling the weatherCondition method and also saving its results in a variable of string.
+            String weatherCondition = getWeatherCondition(Double.parseDouble(temperature));
+            
+            //Calling the clothingSuggestion method and saving its results in a string variable.
+            String clothingSuggestion = suggestClothing(temperature);
+            
+            //We print out the temperature in Celsius degrees
+            System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
+            
+            //Printing out the weather condition
+            System.out.println("According to the reports, the weather looks like " + weatherCondition);
+            
+            //Printing out the chance of precipitation
+            System.out.println("The chance of precipitation is " + precipitationChance);
 
-          //Printing out the wind speed
-          System.out.println("The wind speed is " + wind);
+            //Printing out the wind speed
+            System.out.println("The wind speed is " + wind);
 
-          //printing out the clothing suggestion
-          System.out.println("The best choice of clothing is " + clothingSuggestion);
-      }
-      
-      //closing the scanner
-      scanner.close();
-
+            //printing out the clothing suggestion
+            System.out.println("The best choice of clothing is " + clothingSuggestion);
+        }
+        
+        //closing the scanner
+        scanner.close();
+        
 	}
 
 	//------- All the methods are called below ---------
@@ -84,12 +91,19 @@ public class Code_Review_2_Nootnoot {
 	
 	//This method prints a message and simulates processing time by pausing execution for 2 seconds
 	public static void delayedExecution() throws InterruptedException{
-  	System.out.println("\nPlease hang on a second..."); //Printing user to wait for couple of seconds
-  	//This pauses the execution of the thread for 2000 milliseconds
-  	//From this feature creates a more realistic experience for the user by introducing a delay that simulates actual processing time
-  	Thread.sleep(2000); //Waiting for 2 seconds before printing the weather
+    	System.out.println("\nPlease hang on a second..."); //Printing user to wait for couple of seconds
+    	//This pauses the execution of the thread for 2000 milliseconds
+    	//From this feature creates a more realistic experience for the user by introducing a delay that simulates actual processing time
+    	Thread.sleep(2000); //Waiting for 2 seconds before printing the weather
 	}
 
+	//This method prints out all the possible chatbot commands the user can perform
+	public static void showCommands() {
+		System.out.println("Here are the available commands:");
+		System.out.println("- Type the name of a city to get its weather");
+		System.out.println("- Type 'quit' or 'q' to exit");
+		}
+	
 	//This method displays a friendly picture of Nootnoot to welcome the user
 	public static String nootnootPictureGreeting() {
 		ImageIcon icon = new ImageIcon("nootnoot.jpg"); // Load the image of clouds
@@ -111,53 +125,53 @@ public class Code_Review_2_Nootnoot {
 	    return false;
 	}
 	
-    //Code or method, that suggest the type of cloth to wear while going outside, according to the temprature of the area.
+//	Code or method, that suggest the type of cloth to wear while going outside, according to the temprature of the area.
 	private static String suggestClothing(String temperature) {
-      double temp = Double.parseDouble(temperature);
-      if (temp < 5) {
-          return "a heavy coat or jacket, thick gloves, a winter scarf, and a hat that could cover your ears.";
-      } 
-      else if (temp >= 5 && temp < 10) {
-          return "a warm coat, gloves, and hat if required.";
-      } 
-      else if (temp >= 10 && temp < 20) {
-          return "a jacket, a hoodie or a sweater.";
-      } 
-      else if (temp >= 20 && temp < 25) {
-          return "a half-sleeved shirt or nice looking T-shirt and  shorts or tracks.";
-      } 
-      else if (temp >= 25 && temp < 30) {
-          return "a normal t-shirt and joggers or shorts.";
-      } 
-      else {
-          return "light weight shorts, shirts or shirtless.";
-      }
-  }
+        double temp = Double.parseDouble(temperature);
+        if (temp < 5) {
+            return "a heavy coat or jacket, thick gloves, a winter scarf, and a hat that could cover your ears.";
+        } 
+        else if (temp >= 5 && temp < 10) {
+            return "a warm coat, gloves, and hat if required.";
+        } 
+        else if (temp >= 10 && temp < 20) {
+            return "a jacket, a hoodie or a sweater.";
+        } 
+        else if (temp >= 20 && temp < 25) {
+            return "a half-sleeved shirt or nice looking T-shirt and  shorts or tracks.";
+        } 
+        else if (temp >= 25 && temp < 30) {
+            return "a normal t-shirt and joggers or shorts.";
+        } 
+        else {
+            return "light weight shorts, shirts or shirtless.";
+        }
+    }
 	
 	//Method used to express the type of weather/ weather ccondition, matching with the provided location and temprature.
 	public static String getWeatherCondition(double temperature) {
-      if (temperature < 0) {
-          return "freezing.";
-      } 
-      else if (temperature >= 0 && temperature < 10) {
-          return "very cold.";
-      } 
-      else if (temperature >= 10 && temperature < 20) {
-          return "cold.";
-      } 
-      else if (temperature >= 20 && temperature < 30) {
-          return "pleasant.";
-      } 
-      else {
-          return "very hot.";
-      }
-  }
+        if (temperature < 0) {
+            return "freezing.";
+        } 
+        else if (temperature >= 0 && temperature < 10) {
+            return "very cold.";
+        } 
+        else if (temperature >= 10 && temperature < 20) {
+            return "cold.";
+        } 
+        else if (temperature >= 20 && temperature < 30) {
+            return "pleasant.";
+        } 
+        else {
+            return "very hot.";
+        }
+    }
 
 	//This method fetches weather data from the OpenWeatherMap.org API website and returns the weather date in String format 
 	//It also handles any exceptions that may occur while trying to fetch the data
 	public static String fetchWeatherData(String city, String open_weather_api_key) {
 	    StringBuilder weatherDataString = new StringBuilder();
-  	    //Implementing try-catch block code for handling any kind of errors that occur during I/O operations
+    	//Implementing try-catch block code for handling any kind of errors that occur during I/O operations
 	    try {
 	        URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + open_weather_api_key);
 	        HttpURLConnection connection = (HttpURLConnection) url.openConnection(); //created a new connection to the API using HTTP protocol
@@ -189,7 +203,7 @@ public class Code_Review_2_Nootnoot {
 
     //This method extracts the weather in degrees Celsius from the raw weather data
     //Now the extracted temperature value is converted into String format with 2 decimal places.
-	public static String extractTemperatureInCelsius(String weatherData) {
+	 public static String extractTemperatureInCelsius(String weatherData) {
 	    int startIndex = weatherData.indexOf("temp\":");
 	    if (startIndex < 0) { //Checking if the 'temp' value exists or not
 	        return ""; //Return an empty string as a fallback
@@ -241,6 +255,4 @@ public class Code_Review_2_Nootnoot {
 	     return String.format("%.2f", windSpeed) + " km/h"; //Returns the wind speed in'km/h'
 	 }
 }
-
-
 
