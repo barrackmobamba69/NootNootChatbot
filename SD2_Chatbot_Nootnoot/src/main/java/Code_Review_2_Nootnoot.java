@@ -108,6 +108,7 @@ public class Code_Review_2_Nootnoot {
 	public static void showCommands() {
 		System.out.println("Here are the available commands:");
 		System.out.println("- Type the name of a city to get its weather");
+		System.out.println("- Type 'plan' to plan your trip");
 		System.out.println("- Type 'quit' or 'q' to exit");
 		}
 	
