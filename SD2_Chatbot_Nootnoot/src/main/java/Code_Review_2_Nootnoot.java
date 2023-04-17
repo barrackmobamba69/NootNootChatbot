@@ -13,6 +13,7 @@ public class Code_Review_2_Nootnoot {
 	public static void main(String[] args) throws Exception {
         welcomeMessage(); //Calling welcomeMessage() method
         nootnootPictureGreeting(); //Calling nootnoot
+        System.out.println("Type 'help' to show the command list");
         
 		//Adding scanner to read input from standard input stream
 		Scanner scanner = new Scanner(System.in);
@@ -26,6 +27,13 @@ public class Code_Review_2_Nootnoot {
             if (endConversation(city)) { //Calling endConversation() method
                 break;
             }
+            
+            //Calling the function which helps the user by showing all the possible chatbot commands
+            if (city.equalsIgnoreCase("help")) {
+                showCommands();
+                continue;
+            }
+
 
             String weatherData = fetchWeatherData(city, open_weather_api_key); //Calling fetchWeatherData() method
             String temperature = extractTemperatureInCelsius(weatherData); //Calling extractTemperature() method
@@ -65,7 +73,7 @@ public class Code_Review_2_Nootnoot {
         
         //closing the scanner
         scanner.close();
-
+        
 	}
 
 	//------- All the methods are called below ---------
@@ -90,6 +98,13 @@ public class Code_Review_2_Nootnoot {
     	Thread.sleep(2000); //Waiting for 2 seconds before printing the weather
 	}
 
+	//This method prints out all the possible chatbot commands the user can perform
+	public static void showCommands() {
+		System.out.println("Here are the available commands:");
+		System.out.println("- Type the name of a city to get its weather");
+		System.out.println("- Type 'quit' or 'q' to exit");
+		}
+	
 	//This method displays a friendly picture of Nootnoot to welcome the user
 	public static String nootnootPictureGreeting() {
 		ImageIcon icon = new ImageIcon("nootnoot.jpg"); // Load the image of clouds
