@@ -39,6 +39,13 @@ public class Code_Review_2_NootnootTest {
 	    assertEquals(true, Code_Review_2_Nootnoot.endConversation(input));
 	    assertEquals(true, Code_Review_2_Nootnoot.endConversation(inputTwo));
 	}
+	
+	@Test // Function to show the weather data, according to the place name from open weather api
+	public void testFetchWeatherData() {
+	    String city = "Dublin";
+	    String weatherData = Code_Review_2_Nootnoot.fetchWeatherData(city, Code_Review_2_Nootnoot.open_weather_api_key);
+	    assertTrue(weatherData.contains("weather") && weatherData.contains("main") && weatherData.contains("temp"));
+	}
 
     @Test
     public void test_getWeatherCondition() {
