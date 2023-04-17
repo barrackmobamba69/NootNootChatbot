@@ -136,22 +136,22 @@ public class Code_Review_2_Nootnoot {
 	public static String suggestClothing(String temperature) {
         double temp = Double.parseDouble(temperature);
         if (temp < 0) {
-            return "a heavy coat, thick gloves, a winter scarf, and a hat that could cover your ears.";
+            return "You'll need a heavy coat or jacket, thick gloves, a winter scarf, and a hat that covers your ears.";
         } 
         else if (temp >= 0 && temp < 10) {
-            return "a warm coat, gloves, and a hat if required.";
+            return "You'll need a warm coat, gloves, and hat if required.";
         } 
         else if (temp >= 10 && temp < 15) {
-            return "a jacket, a hoodie or a sweater.";
+            return "You'll need a jacket, a hoodie, or a sweater.";
         } 
         else if (temp >= 15 && temp < 20) {
-            return "a light jacket or a long-sleeved shirt with jeans.";
+            return "You'll be comfortable in a half-sleeved shirt or nice-looking t-shirt and shorts or tracks.";
         } 
         else if (temp >= 20 && temp < 25) {
-            return "a t-shirt with shorts or a skirt.";
+            return "You'll be comfortable in a normal t-shirt and joggers or shorts.";
         } 
         else {
-            return "light weight clothing such as a tank top and shorts or a summer dress.";
+            return "You'll need light-weight shorts, shirts or no shirt at all!";
         }
     }
 	
