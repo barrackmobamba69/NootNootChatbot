@@ -1,8 +1,5 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
-
-import src.main.java.Code_Review_2_Nootnoot;
-
 import java.io.ByteArrayOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.PrintStream;
@@ -46,11 +43,10 @@ public class Code_Review_2_NootnootTest {
 	@Test // Function to show the weather data, according to the place name from open weather api
 	public void testFetchWeatherData() {
 	    String city = "Dublin";
-	    String weatherData = Code_Review_2_Nootnoot.fetchWeatherData(city, Code_Review_2_Nootnoot.open_weather_api_key);
+	    String weatherData = Code_Review_2_Nootnoot.fetchWeatherData(city, Code_Review_2_Nootnoot.OPEN_WEATHER_API_KEY);
 	    assertTrue(weatherData.contains("weather") && weatherData.contains("main") && weatherData.contains("temp"));
 	}
 	
-
     @Test // test 1 (Function used to extract temperature to celsius)
     public void test_extractTemperatureInCelsius() {
         String weatherData = "{\"main\":{\"temp\":288.7,\"feels_like\":288.7,\"pressure\":1024,\"humidity\":93,\"temp_min\":288.7,\"temp_max\":288.7,\"sea_level\":1024,\"grnd_level\":1015}}";
