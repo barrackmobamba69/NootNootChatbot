@@ -111,16 +111,14 @@ public class Code_Review_2_Nootnoot {
 	
 	//This method displays a friendly picture of Nootnoot to welcome the user
 	public static String nootnootPictureGreeting() throws InterruptedException {
-        ImageIcon icon = new ImageIcon("nootnoot.jpg"); //Load the image of nootnoot
-        JLabel label = new JLabel(icon); // Create a new JLabel with the image
-        JFrame frame = new JFrame("Weather"); // Create a new JFrame
-        frame.add(label); // Add the JLabel to the JFrame
-        frame.pack(); // Resize the JFrame to fit the image
-        frame.setVisible(true); // Display the JFrame
-        Thread.sleep(1000); //Nootnoot leaves after 1 second
-        frame.setVisible(false);
-        frame.dispose();
-        return "Nootnoot!";
+	    JFrame frame = new JFrame("Nootnoot Welcomes You!");
+	    frame.add(new JLabel(new ImageIcon("nootnoot.jpg")));
+	    frame.pack();
+	    frame.setLocationRelativeTo(null);
+	    frame.setVisible(true);
+	    Thread.sleep(1000);
+	    frame.dispose(); 
+	    return "Nootnoot!";
 	}
 
 	//This code represents how the user can end the conversation with Nootnoot
