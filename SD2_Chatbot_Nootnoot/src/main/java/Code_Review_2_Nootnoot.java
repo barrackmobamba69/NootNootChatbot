@@ -283,6 +283,7 @@ public class Code_Review_2_Nootnoot {
 		    scanner.close();
 		}
 
+	 //This function takes a Scanner object as an argument and returns an array of 5 locations
 	 public static String[] getLocations(Scanner scanner) {
 	    String[] locations = new String[5];
 
@@ -296,30 +297,32 @@ public class Code_Review_2_Nootnoot {
 	            i--; // Decrement the index so the current location can be reentered
 	        }
 	    }
-
 	    return locations;
 	}
 
-	public static void displayWeatherData(String[] locations) throws Exception {
-	    //loop through each location and get weather data
-	    for (int i = 0; i < 5; i++) {
-	        String weatherData = fetchWeatherData(locations[i], OPEN_WEATHER_API_KEY);
-	        String temperature = extractTemperatureInCelsius(weatherData);
-	        String precipitationChance = extractPrecipitationChance(weatherData);
-	        String wind = extractWind(weatherData);
-	        String clothingSuggestion = suggestClothing(temperature);
+	 //This method takes an array of locations as input and throws an exception if something goes wrong
+	 public static void displayWeatherData(String[] locations) throws Exception {
+		 //looping through each location and get weather data
+		 for (int i = 0; i < 5; i++) {
+			 String weatherData = fetchWeatherData(locations[i], OPEN_WEATHER_API_KEY);
+	         String temperature = extractTemperatureInCelsius(weatherData);
+	         String precipitationChance = extractPrecipitationChance(weatherData);
+	         String wind = extractWind(weatherData);
+	         String clothingSuggestion = suggestClothing(temperature);
+	         
+	         printWeatherData(locations[i], temperature, precipitationChance, wind, clothingSuggestion);
+		 }
+	 }
 
-	        printWeatherData(locations[i], temperature, precipitationChance, wind, clothingSuggestion);
-	    }
-	}
 
-	public static void printWeatherData(String location, String temperature, String precipitationChance, String wind, String clothingSuggestion) {
-	    System.out.println("===================================");
-	    System.out.println("Location: " + location);
-	    System.out.println("Temperature: " + temperature + " degrees Celsius");
-	    System.out.println("Precipitation Chance: " + precipitationChance);
-	    System.out.println("Wind Speed: " + wind);
-	    System.out.println("Clothing Suggestion: " + clothingSuggestion);
-	}
+	 //This function prints weather data for a given location, including temperature, precipitation chance, wind speed and clothing suggestion.
+	 public static void printWeatherData(String location, String temperature, String precipitationChance, String wind, String clothingSuggestion) {
+	     System.out.println("===================================");
+	     System.out.println("Location: " + location);
+	     System.out.println("Temperature: " + temperature + " degrees Celsius");
+	     System.out.println("Precipitation Chance: " + precipitationChance);
+	     System.out.println("Wind Speed: " + wind);
+	     System.out.println("Clothing Suggestion: " + clothingSuggestion);
+	 }	
 }
 
