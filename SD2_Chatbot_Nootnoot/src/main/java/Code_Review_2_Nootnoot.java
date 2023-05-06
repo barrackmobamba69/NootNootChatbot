@@ -208,9 +208,9 @@ public class Code_Review_2_Nootnoot {
 	}
 
     //This method extracts the weather in degrees Celsius from the raw weather data
-    //Now the extracted temperature value is converted into String format with 2 decimal places.
-	 public static String extractTemperatureInCelsius(String weatherData) {
-	    int startIndex = weatherData.indexOf("temp\":");
+	//Now the extracted temperature value is converted into String format with 2 decimal places.
+	public static String extractTemperatureInCelsius(String weatherData) {
+		int startIndex = weatherData.indexOf("temp\":");
 	    if (startIndex < 0) { //Checking if the 'temp' value exists or not
 	        return ""; //Return an empty string as a fallback
 	    }
@@ -219,34 +219,45 @@ public class Code_Review_2_Nootnoot {
 	    double kelvinTemperature = Double.parseDouble(weatherData.substring(startIndex, endIndex));
 	    double celsiusTemperature = kelvinTemperature - 273.15; //Converting Kelvin to Celsius, because Celsius scale is commonly used
 	    return String.format("%.2f", celsiusTemperature); //Returns the temperature as a String with 2 decimal places
-	 }
+	}
 	 
-	 //This method extracts the chance of precipitation from the weather API
-	 public static String extractPrecipitationChance(String weatherData) {
-	     int startIndex = weatherData.indexOf("weather\":");
-	     if (startIndex < 0) {
-	         return "unknown"; //Return an unknown value if there is no weather information
-	     }
-	     
-	     //Extract the weather description or code field from the response
-	     startIndex = weatherData.indexOf("\"description\":", startIndex);
-	     if (startIndex < 0) { //If the description field is not found, try searching for the id instead
-	         startIndex = weatherData.indexOf("\"id\":", startIndex);
-	         if (startIndex < 0) {
-	             return "unknown"; //Return an unknown value if the weather information cannot be extracted
-	         }
-	     }
-	     startIndex = weatherData.indexOf("\"", startIndex) + 1;
-	     int endIndex = weatherData.indexOf("\"", startIndex);
-	     String weatherInfo = weatherData.substring(startIndex, endIndex);
-	     
-	     //Check if the description or code indicates any kind of precipitation
-	     if (weatherInfo.contains("rain")) {
-	         return "high"; //Return high chance if there is rain
-	     } else if (weatherInfo.contains("snow")) {
-	         return "moderate"; //Return moderate chance if there is any snow
-	     }
-	     return "low"; //Default value for no precipitation recorded
+	//This method extracts the chance of precipitation from the weather API
+	public static String extractPrecipitationChance(String weatherData) {
+		int startIndex = weatherData.indexOf("weather\":");
+		if (startIndex < 0) {
+			return "unknown"; //Return an unknown value if there is no weather information
+		}
+		//Calling broken down functions
+		String weatherInfo = extractWeatherInfo(startIndex, weatherData);
+		String precipitationChance = getPrecipitationChance(weatherInfo);
+		return precipitationChance; 
+	}
+
+	 //This function extracts the weather description or code field from the response
+	 public static String extractWeatherInfo(int startIndex, String weatherData) {
+		 startIndex = weatherData.indexOf("\"description\":", startIndex);
+		 if (startIndex < 0) { //If the description field is not found, try searching for the id instead
+			 startIndex = weatherData.indexOf("\"id\":", startIndex);
+			 if (startIndex < 0) {
+				 return "unknown"; //Return an unknown value if the weather information cannot be extracted
+			 }
+		 }
+		 startIndex = weatherData.indexOf("\"", startIndex) + 1;
+		 int endIndex = weatherData.indexOf("\"", startIndex);
+		 String weatherInfo = weatherData.substring(startIndex, endIndex);
+		    
+		 return weatherInfo;
+	 }
+
+	 //This function checks if the description or code indicates any kind of precipitation
+	 public static String getPrecipitationChance(String weatherInfo) {
+		 if (weatherInfo.contains("rain")) {
+			 return "high"; //Return high chance if there is rain
+		 } else if (weatherInfo.contains("snow")) {
+			 return "moderate"; //Return moderate chance if there is any snow
+		 } else {
+			 return "low"; //Default value for no precipitation recorded
+		 }
 	 }
 	 
 	 //This method extracts the wind speed from the weather API
@@ -264,19 +275,15 @@ public class Code_Review_2_Nootnoot {
 	 //This method is a plan-trip planner which provides clothing requirements based on the weather conditions in all 5 locations
 	 public static void plan() throws Exception {
 		    Scanner scanner = new Scanner(System.in);
-
 		    System.out.println("Welcome to the trip planner! Please enter 5 locations.");
-
 		    //initialize array to store locations
 		    String[] locations = getLocations(scanner);
-
 		    //loop through each location and get weather data
 		    displayWeatherData(locations);
-
 		    scanner.close();
 		}
 
-	 private static String[] getLocations(Scanner scanner) {
+	 public static String[] getLocations(Scanner scanner) {
 	    String[] locations = new String[5];
 
 	    //Getting input locations
@@ -293,7 +300,7 @@ public class Code_Review_2_Nootnoot {
 	    return locations;
 	}
 
-	private static void displayWeatherData(String[] locations) throws Exception {
+	public static void displayWeatherData(String[] locations) throws Exception {
 	    //loop through each location and get weather data
 	    for (int i = 0; i < 5; i++) {
 	        String weatherData = fetchWeatherData(locations[i], OPEN_WEATHER_API_KEY);
@@ -306,7 +313,7 @@ public class Code_Review_2_Nootnoot {
 	    }
 	}
 
-	private static void printWeatherData(String location, String temperature, String precipitationChance, String wind, String clothingSuggestion) {
+	public static void printWeatherData(String location, String temperature, String precipitationChance, String wind, String clothingSuggestion) {
 	    System.out.println("===================================");
 	    System.out.println("Location: " + location);
 	    System.out.println("Temperature: " + temperature + " degrees Celsius");
