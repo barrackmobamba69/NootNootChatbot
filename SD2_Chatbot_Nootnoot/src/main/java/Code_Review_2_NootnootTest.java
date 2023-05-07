@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class Code_Review_2_NootnootTest {
 
     @Test
+    //This unit test verifies if the testWelcomeMessage function works fine or not
     public void testWelcomeMessage() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
@@ -17,6 +18,7 @@ public class Code_Review_2_NootnootTest {
     }
 
     @Test
+    //This test checks if inputLocation() method reads and returns user location input correctly
     public void testInputLocation() {
         ByteArrayInputStream in = new ByteArrayInputStream("London\n".getBytes());
         System.setIn(in);
@@ -24,7 +26,8 @@ public class Code_Review_2_NootnootTest {
         assertEquals(expectedOutput, Code_Review_2_Nootnoot.inputLocation());
     }
 
-    @Test //Function to check if the user input command is to end the conversation or not.
+    @Test 
+    //Function to check if the user input command is to end the conversation or not
     public void testEndConversationQuit() {
         String input = "quit";
         String inputTwo = "q";
@@ -33,6 +36,7 @@ public class Code_Review_2_NootnootTest {
     }
 
     @Test
+    //This test checks if showCommands() method prints available commands correctly
     public void testShowCommands() {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
@@ -42,6 +46,7 @@ public class Code_Review_2_NootnootTest {
     }
 
     @Test
+    //This test checks if displayWelcomeImageOfNootnoot() method displays the welcome image
     public void testDisplayWelcomeImageOfNootnoot() throws InterruptedException {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
