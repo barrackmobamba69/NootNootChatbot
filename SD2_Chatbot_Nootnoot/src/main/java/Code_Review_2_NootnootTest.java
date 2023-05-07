@@ -32,6 +32,15 @@ public class Code_Review_2_NootnootTest {
 	    assertEquals(true, Code_Review_2_Nootnoot.endConversation(inputTwo));
 	}
 	
+	@Test
+	public void testShowCommands() {
+	    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	    System.setOut(new PrintStream(outContent));
+	    Code_Review_2_Nootnoot.showCommands();
+	    String expectedOutput = "Here are the available commands:\n-Type the name of a city to get its weather\n-Type 'plan' to plan your trip\n-Type 'quit' or 'q' to exit\n";
+	    assertEquals(expectedOutput, outContent.toString());
+	}
+	
 	@Test // Function to show the weather data, according to the place name from open weather api
 	public void testFetchWeatherData() {
 	    String city = "Dublin";
