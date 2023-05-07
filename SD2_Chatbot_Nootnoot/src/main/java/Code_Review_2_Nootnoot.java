@@ -24,8 +24,6 @@ public class Code_Review_2_Nootnoot {
 		while (true) {
 			String city = inputLocation(); //Calling inputLocation() method
             
-            delayedExecution(); //Calling pauseExecution() method
-
             if (endConversation(city)) { //Calling endConversation() method
                 break;
             }
@@ -105,14 +103,6 @@ public class Code_Review_2_Nootnoot {
 	    return scan.nextLine(); //Reading users' input
 	}
 	
-	//This method prints a message and simulates processing time by pausing execution for 2 seconds
-	public static void delayedExecution() throws InterruptedException{
-    	System.out.println("\nPlease hang on a second..."); //Printing user to wait for couple of seconds
-    	//This pauses the execution of the thread for 2000 milliseconds
-    	//From this feature creates a more realistic experience for the user by introducing a delay that simulates actual processing time
-    	Thread.sleep(2000); //Waiting for 2 seconds before printing the weather
-	}
-
 	//This method prints out all the possible chatbot commands the user can perform
 	public static void showCommands() {
 		System.out.println("Here are the available commands:");
