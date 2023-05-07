@@ -9,14 +9,13 @@ import com.sun.speech.freetts.VoiceManager;
 import com.sun.speech.freetts.VoiceDirectory;
 import com.sun.speech.freetts.Voice;
 
-
 public class Code_Review_2_Nootnoot {
 
     public static final String OPEN_WEATHER_API_KEY = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
     
 	public static void main(String[] args) throws Exception {
         welcomeMessage(); //Calling welcomeMessage() method
-        nootnootPictureGreeting(); //Calling Nootnoot picture
+        displayWelcomeImageOfNootnoot(); //Calling Nootnoot picture
         System.out.println("Type 'help' to show the command list");
         
 		//Adding scanner to read input from standard input stream
@@ -102,7 +101,7 @@ public class Code_Review_2_Nootnoot {
 	//This method uses Scanner object to ask the user to input the city name
 	public static String inputLocation() {
 	    Scanner scan = new Scanner(System.in); //Created a scanner object
-	    System.out.println("\nWhat location would you like to know the weather for? "); //Printing users input
+	    System.out.println("\nWhat location would you like to know the weather for? (e.g. London, Cork)"); //Printing users input
 	    return scan.nextLine(); //Reading users' input
 	}
 	
@@ -123,7 +122,7 @@ public class Code_Review_2_Nootnoot {
 	}
 	
 	//This method displays a friendly picture of Nootnoot to welcome the user
-	public static String nootnootPictureGreeting() throws InterruptedException {
+	public static String displayWelcomeImageOfNootnoot() throws InterruptedException {
 	    JFrame frame = new JFrame("Nootnoot Welcomes You!");
 	    frame.add(new JLabel(new ImageIcon("nootnoot.jpg")));
 	    frame.pack();
@@ -167,11 +166,11 @@ public class Code_Review_2_Nootnoot {
         }
     }
 	
-	//Method used to express the type of weather/ weather ccondition, matching with the provided location and temprature.
+	//Method used to express the type of weather/ weather condition, matching with the provided location and temprature.
 	public static String getWeatherCondition(double temperature) {
         if (temperature < 0) {
             return "freezing.";
-        } 
+        }
         else if (temperature >= 0 && temperature < 10) {
             return "very cold.";
         } 
@@ -211,7 +210,6 @@ public class Code_Review_2_Nootnoot {
 	        start += 7;
 	        int end = weatherDataString.indexOf(",", start);
 	        String weatherCondition = weatherDataString.substring(start, end).replaceAll("\"", "");
-
 	    }
         //This block of code handles any exceptions that occur while trying to fetch weather data from OpenWeatherMap.org api website
 	    catch (Exception e) {
@@ -233,7 +231,7 @@ public class Code_Review_2_Nootnoot {
 	    double celsiusTemperature = kelvinTemperature - 273.15; //Converting Kelvin to Celsius, because Celsius scale is commonly used
 	    return String.format("%.2f", celsiusTemperature); //Returns the temperature as a String with 2 decimal places
 	}
-	 
+
 	//This method extracts the chance of precipitation from the weather API
 	public static String extractPrecipitationChance(String weatherData) {
 		int startIndex = weatherData.indexOf("weather\":");
