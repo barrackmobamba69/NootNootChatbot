@@ -41,6 +41,16 @@ public class Code_Review_2_NootnootTest {
 	    assertEquals(expectedOutput, outContent.toString());
 	}
 	
+	@Test
+	public void testDisplayWelcomeImageOfNootnoot() throws InterruptedException {
+	    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	    System.setOut(new PrintStream(outContent));
+	    Code_Review_2_Nootnoot.displayWelcomeImageOfNootnoot();
+	    Thread.sleep(2000);
+	    String expectedOutput = "Nootnoot!";
+	    assertEquals(expectedOutput, outContent.toString());
+	}
+	
 	@Test // Function to show the weather data, according to the place name from open weather api
 	public void testFetchWeatherData() {
 	    String city = "Dublin";
