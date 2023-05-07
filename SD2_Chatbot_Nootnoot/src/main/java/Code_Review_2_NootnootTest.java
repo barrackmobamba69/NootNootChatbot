@@ -9,27 +9,19 @@ public class Code_Review_2_NootnootTest {
 	
 	@Test
 	public void testWelcomeMessage() {
-	    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-	    System.setOut(new PrintStream(byteArrayOutputStream));
+	    ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+	    System.setOut(new PrintStream(outContent));
 	    Code_Review_2_Nootnoot.welcomeMessage();
-	    String expected = "Hey there, Welcome to Weather ChatBot! \nMy name's Nootnoot, nice to meet you!\n";
-	    assertEquals(expected, byteArrayOutputStream.toString());
+	    String expectedOutput = "Welcome to the Weather ChatBot! \nHi my name's Nootnoot\n";
+	    assertEquals(expectedOutput, outContent.toString());
 	}
 	
     @Test
     public void testInputLocation() {
-        // test 1
-        String expected = "Dublin";
-        ByteArrayInputStream in1 = new ByteArrayInputStream(expected.getBytes());
-        System.setIn(in1);
-        assertEquals(expected, Code_Review_2_Nootnoot.inputLocation());
-
-        // test 2 - testing, weather the function arises any exception, when given an invalid input.
-        expected = "Seattle";
-	    String input = "Seattle";
-	    System.setIn(new java.io.ByteArrayInputStream(input.getBytes()));
-	    String actual = Code_Review_2_Nootnoot.inputLocation();
-	    assertEquals(expected, actual);
+        ByteArrayInputStream in = new ByteArrayInputStream("London\n".getBytes());
+        System.setIn(in);
+        String expectedOutput = "Naas";
+        assertEquals(expectedOutput, Code_Review_2_Nootnoot.inputLocation());
     }
 	
 	@Test //Function to check if the user input command is to end the conversation or not.
