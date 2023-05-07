@@ -16,7 +16,7 @@ public class Code_Review_2_Nootnoot {
     
 	public static void main(String[] args) throws Exception {
         welcomeMessage(); //Calling welcomeMessage() method
-        nootnootPictureGreeting(); //Calling nootnoot
+        nootnootPictureGreeting(); //Calling Nootnoot picture
         System.out.println("Type 'help' to show the command list");
         
 		//Adding scanner to read input from standard input stream
