@@ -5,6 +5,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Scanner;
 import javax.swing.*;
+import com.sun.speech.freetts.VoiceManager;
+import com.sun.speech.freetts.VoiceDirectory;
+import com.sun.speech.freetts.Voice;
+
 
 public class Code_Review_2_Nootnoot {
 
@@ -59,8 +63,17 @@ public class Code_Review_2_Nootnoot {
             //Calling the clothingSuggestion method and saving its results in a string variable.
             String clothingSuggestion = suggestClothing(temperature);
             
-            //We print out the temperature in Celsius degrees
+            //We print out the temperature in Celsius degrees and also speak using voice
             System.out.println("The temperature in " + city + " is " + temperature + " degrees Celsius.");
+            VoiceManager voiceManager = VoiceManager.getInstance(); //instance of the VoiceManager class
+            Voice[] voices = voiceManager.getVoices();
+            Voice voice = voices[1];
+            voice.allocate();
+            voice.setRate(150);
+            voice.setVolume(1.0f);
+            voice.speak("The temperature in " + city + " is " + temperature + " degrees Celsius.");
+            voice.deallocate(); //freeing up the memory occupied by the voice object
+
             
             //Printing out the weather condition
             System.out.println("According to the reports, the weather looks like " + weatherCondition);
@@ -313,7 +326,6 @@ public class Code_Review_2_Nootnoot {
 	         printWeatherData(locations[i], temperature, precipitationChance, wind, clothingSuggestion);
 		 }
 	 }
-
 
 	 //This function prints weather data for a given location, including temperature, precipitation chance, wind speed and clothing suggestion.
 	 public static void printWeatherData(String location, String temperature, String precipitationChance, String wind, String clothingSuggestion) {

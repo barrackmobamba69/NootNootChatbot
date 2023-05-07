@@ -49,6 +49,8 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="lib/freetts.jar"/>
+	<classpathentry kind="lib" path="C:/Users/UDAYY/git/sd2_chatbot_nootnoot/SD2_Chatbot_Nootnoot/bin/lib/freetts-1.2.2-bin/freetts-1.2/lib/cmu_time_awb.jar"/>
 	<classpathentry kind="lib" path="C:/Users/UDAYY/git/sd2_chatbot_nootnoot/SD2_Chatbot_Nootnoot/bin/lib/freetts-1.2.2-bin/freetts-1.2/lib/cmu_us_kal.jar"/>
 	<classpathentry kind="lib" path="C:/Users/UDAYY/git/sd2_chatbot_nootnoot/SD2_Chatbot_Nootnoot/bin/lib/freetts-1.2.2-bin/freetts-1.2/lib/cmudict04.jar"/>
 	<classpathentry kind="lib" path="C:/Users/UDAYY/git/sd2_chatbot_nootnoot/SD2_Chatbot_Nootnoot/bin/lib/freetts-1.2.2-bin/freetts-1.2/lib/cmulex.jar"/>
@@ -57,6 +59,5 @@
 	<classpathentry kind="lib" path="C:/Users/UDAYY/git/sd2_chatbot_nootnoot/SD2_Chatbot_Nootnoot/bin/lib/freetts-1.2.2-bin/freetts-1.2/lib/freetts.jar"/>
 	<classpathentry kind="lib" path="C:/Users/UDAYY/git/sd2_chatbot_nootnoot/SD2_Chatbot_Nootnoot/bin/lib/freetts-1.2.2-bin/freetts-1.2/lib/freetts-jsapi10.jar"/>
 	<classpathentry kind="lib" path="C:/Users/UDAYY/git/sd2_chatbot_nootnoot/SD2_Chatbot_Nootnoot/bin/lib/freetts-1.2.2-bin/freetts-1.2/lib/mbrola.jar"/>
-	<classpathentry kind="lib" path="C:/Users/UDAYY/git/sd2_chatbot_nootnoot/SD2_Chatbot_Nootnoot/bin/lib/freetts-1.2.2-bin/freetts-1.2/lib/cmu_time_awb.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
