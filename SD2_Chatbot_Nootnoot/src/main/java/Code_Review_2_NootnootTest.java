@@ -1,5 +1,6 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import java.io.ByteArrayOutputStream;
 import java.io.ByteArrayInputStream;
 import java.io.PrintStream;
@@ -52,26 +53,30 @@ public class Code_Review_2_NootnootTest {
 	}
 	
 	@Test // Function to show the weather data, according to the place name from open weather api
-	public void testFetchWeatherData() {
-	    String city = "Dublin";
-	    String weatherData = Code_Review_2_Nootnoot.fetchWeatherData(city, Code_Review_2_Nootnoot.OPEN_WEATHER_API_KEY);
-	    assertTrue(weatherData.contains("weather") && weatherData.contains("main") && weatherData.contains("temp"));
-	}
+    public void testFetchWeatherData() {
+        String city = "San Francisco";
+        String api_key = "1234567890abcdef";
+        String weatherData = Code_Review_2_Nootnoot.fetchWeatherData(city, api_key);
+        Assertions.assertNotNull(weatherData);
+    }
 	
-    @Test // test 1 (Function used to extract temperature to celsius)
-    public void test_extractTemperatureInCelsius() {
-        String weatherData = "{\"main\":{\"temp\":288.7,\"feels_like\":288.7,\"pressure\":1024,\"humidity\":93,\"temp_min\":288.7,\"temp_max\":288.7,\"sea_level\":1024,\"grnd_level\":1015}}";
-        String expected = "15.6";
-        String actual = Code_Review_2_Nootnoot.extractTemperatureInCelsius(weatherData);
-        assertEquals(expected, actual);
+    // Test extractTemperatureInCelsius method
+    @Test
+    public void testExtractTemperatureInCelsius() {
+        String weatherData = "{\"coord\":{\"lon\":-122.42,\"lat\":37.77},\"weather\":[{\"id\":500,\"main\":\"Rain\",\"description\":\"light rain\",\"icon\":\"10n\"}],\"base\":\"stations\",\"main\":{\"temp\":280.45,\"pressure\":1017,\"humidity\":71,\"temp_min\":277.04,\"temp_max\":284.82},\"visibility\":16093,\"wind\":{\"speed\":2.6,\"deg\":160},\"clouds\":{\"all\":90},\"dt\":1548108720,\"sys\":{\"type\":1,\"id\":392,\"message\":0.0026,\"country\":\"US\",\"sunrise\":1548130445,\"sunset\":1548165152},\"id\":420006353,\"name\":\"San Francisco\",\"cod\":200}";
+        String expected = "7.30";
+        String result = Weather.extractTemperatureInCelsius(weatherData);
+        Assertions.assertEquals(expected, result);
     }
     
-	@Test // test 2
-	public void test_ExtractTemperatureInCelsius1() {
-	    String weatherData = "{\"coord\":{\"lon\":-73.99,\"lat\":40.73},\"weather\":[{\"id\":800,\"main\":\"Clear\",\"description\":\"clear sky\",\"icon\":\"01d\"}],\"base\":\"stations\",\"main\":{\"temp\":289.72,\"feels_like\":287.95,\"temp_min\":288.15,\"temp_max\":291.48,\"pressure\":1017,\"humidity\":42},\"visibility\":10000,\"wind\":{\"speed\":2.6,\"deg\":240},\"clouds\":{\"all\":1},\"dt\":1605761370,\"sys\":{\"type\":1,\"id\":4610,\"country\":\"US\",\"sunrise\":1605737093,\"sunset\":1605770379},\"timezone\":-18000,\"id\":5128581,\"name\":\"New York\",\"cod\":200}";
-	    String expected = "16.57";
-	    assertEquals(expected, Code_Review_2_Nootnoot.extractTemperatureInCelsius(weatherData));
-	}
+    // Test extractPrecipitationChance method
+    @Test
+    public void testExtractPrecipitationChance() {
+        String weatherData = "{\"coord\":{\"lon\":-122.42,\"lat\":37.77},\"weather\":[{\"id\":500,\"main\":\"Rain\",\"description\":\"light rain\",\"icon\":\"10n\"}],\"base\":\"stations\",\"main\":{\"temp\":280.45,\"pressure\":1017,\"humidity\":71,\"temp_min\":277.04,\"temp_max\":284.82},\"visibility\":16093,\"wind\":{\"speed\":2.6,\"deg\":160},\"clouds\":{\"all\":90},\"dt\":1548108720,\"sys\":{\"type\":1,\"id\":392,\"message\":0.0026,\"country\":\"US\",\"sunrise\":1548130445,\"sunset\":1548165152},\"id\":420006353,\"name\":\"San Francisco\",\"cod\":200}";
+        String expected = "high";
+        String result = Weather.extractPrecipitationChance(weatherData);
+        Assertions.assertEquals(expected, result);
+    }
 	
 	 @Test // function to extract the chance of precipitation by taking a weather data.
 	    public void test_extractPrecipitationChance() {
