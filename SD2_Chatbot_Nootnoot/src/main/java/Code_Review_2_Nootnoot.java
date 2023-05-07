@@ -8,12 +8,26 @@ import javax.swing.*;
 import com.sun.speech.freetts.VoiceManager;
 import com.sun.speech.freetts.VoiceDirectory;
 import com.sun.speech.freetts.Voice;
+import java.io.FileInputStream;
+import java.util.Properties;
 
 public class Code_Review_2_Nootnoot {
 
-    public static final String OPEN_WEATHER_API_KEY = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
+//    public static final String OPEN_WEATHER_API_KEY = "b369057d518ed3e182c04c76c1ec73fe"; //This is the OpenWeatherMap API key
+    public static final String OPEN_WEATHER_API_KEY = "config.properties";
     
 	public static void main(String[] args) throws Exception {
+		
+	    //Loading the configuration file to access the API key
+	    Properties properties = new Properties();
+	    FileInputStream input = new FileInputStream(OPEN_WEATHER_API_KEY);
+	    properties.load(input);
+	    input.close();
+	    
+	    //Retrieve the API key from the configuration file
+	    String openWeatherApiKey = properties.getProperty("openweatherapikey");
+
+
         welcomeMessage(); //Calling welcomeMessage() method
         displayWelcomeImageOfNootnoot(); //Calling Nootnoot picture
         System.out.println("Type 'help' to show the command list");
@@ -40,7 +54,7 @@ public class Code_Review_2_Nootnoot {
                 continue;
             }
 
-            String weatherData = fetchWeatherData(city, OPEN_WEATHER_API_KEY); //Calling fetchWeatherData() method
+            String weatherData = fetchWeatherData(city, openWeatherApiKey); //Calling fetchWeatherData() method
             String temperature = extractTemperatureInCelsius(weatherData); //Calling extractTemperature() method
             String precipitationChance = extractPrecipitationChance(weatherData);
             String wind = extractWind(weatherData);
