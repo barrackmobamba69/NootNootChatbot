@@ -1,64 +1,22 @@
-# SD2_Chatbot_Nootnoot
+# NootNootChatbot
 
+Welcome to our official Nootnoot Weather API Chatbot Wiki.
 
+## Introduction
+Nootnoot is a chatbot application that uses weather API from the [OpenWeatherMap.org](https://home.openweathermap.org) website to provide users with real-time information on the weather of their desired cities.
 
-## Getting started
+# Functionality
+Nootnoot understands user input and responds accurately using natural language processing. Its features include:
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.griffith.ie/barrackmobamba69/sd2_chatbot_nootnoot.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.griffith.ie/barrackmobamba69/sd2_chatbot_nootnoot/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+- Real-time weather updates
+- Weather forecast for the next 5 days
+- Welcoming the user
+- Inputting city name
+- Searching weather data
+- Extracting temperature data
+- Providing more explanation of the climate
+- Suggesting the type of clothing
+- Audio functionality
 
 ## Visuals
 Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
@@ -72,21 +30,31 @@ Use examples liberally, and show the expected output if you can. It's helpful to
 ## Support
 Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+## Technologies Used
+NootNoot is built on a number of technologies such as:
+- Java programming language
+- OpenWeatherMap API for fetching weather data
+- GitLab is used as a repository to store this code
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+## Future Enhancements
+NootNoot is an ongoing project and we plan to add more features in the future such as:
+We are currently working on more functionalities such as adding 
+- GUI
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+## Credits
+- [OpenWeatherMap.org](https://home.openweathermap.org) for providing free weather data and creating easy-to-use APIs.
+- I would like to acknowledge and thank [iamashks](https://github.com/iamashks/OWM-JAPIs) for sharing their chatbot code and providing inspiration for your project.
+- This project was built using Eclipse Java (Version 2021-09 (4.21.0)) and IntelliJ IDEA (Version 2021.2.1)
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+### Contributors
+- @AlbinDrag 
+- @barrackmobamba69 
+- @samuel 
 
 ## License
 For open source projects, say how it is licensed.
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+## Conclusion
+In summary, Nootnoot is an innovative and useful chatbot application that makes it easy and fun to check the weather. Our team is continuously improving the project by adding new features to enhance user experience.
+We hope you found this wiki helpful in understanding the code used for NootNoot chatbot functionality. Thank you for reading and happy coding!
+
