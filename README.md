@@ -1,6 +1,6 @@
 # NootNootChatbot
 
-Welcome to our official Nootnoot Weather API Chatbot Wiki.
+Welcome to our official Nootnoot Weather API Chatbot.
 
 ## Introduction
 Nootnoot is a chatbot application that uses weather API from the [OpenWeatherMap.org](https://home.openweathermap.org) website to provide users with real-time information on the weather of their desired cities.
@@ -19,6 +19,7 @@ Nootnoot understands user input and responds accurately using natural language p
 - Audio functionality
 
 ## Visuals
+The following video gives you an overview of how the chatbot works and answers.
 https://github.com/barrackmobamba69/NootNootChatbot/assets/106630515/a2fd00e5-74e6-4520-9d6f-b3cb95337b3b
 
 ## Installation
