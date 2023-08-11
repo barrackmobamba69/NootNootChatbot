@@ -37,8 +37,7 @@ To get started with this project, there are a few prerequisites that need to be 
 
 3. Running the Nootnoot java files
 After importing the project into your IDE, you should be able to see the project structure, which is as follows:
-![image](https://github.com/barrackmobamba69/NootNootChatbot/assets/106630515/95f2dc65-b389-4240-b07c-66c1634223f4)
-<img src="https://github.com/barrackmobamba69/NootNootChatbot/assets/106630515/95f2dc65-b389-4240-b07c-66c1634223f4" width="300">
+<img src="https://github.com/barrackmobamba69/NootNootChatbot/assets/106630515/95f2dc65-b389-4240-b07c-66c1634223f4" width="500">
 
 
 •	Code_Review_Final_Nootnoot: Contains the main function that includes all project methods
