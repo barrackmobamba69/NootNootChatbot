@@ -39,8 +39,7 @@ NootNoot is built on a number of technologies such as:
 - FreeTTS for audio functionality (Kevin16)
 
 ![image](https://github.com/barrackmobamba69/NootNootChatbot/assets/106630515/c9468303-675e-4105-9c41-655233d1b654)
-              Figure 2 Collage of tools used, May 15, 2023. (Source: canva.com, 2023:online)
-
+*Figure 1: Collage of tools used, May 15, 2023. (Source: canva.com, 2023:online)*
 
 
 ## Future Enhancements
@@ -53,9 +52,9 @@ NootNoot is an ongoing project and we plan to add more features in the future. W
 - This project was built using Eclipse Java (Version 2021-09 (4.21.0)) and IntelliJ IDEA (Version 2021.2.1)
 
 ### Contributors
-- @AlbinDrag 
-- @barrackmobamba69 
-- @samuel 
+- <span style="font-size: 12px;">@AlbinDrag</span>
+- <span style="font-size: 12px;">@barrackmobamba69</span>
+- <span style="font-size: 12px;">@samuel</span>
 
 ## License
 For open source projects, say how it is licensed.
