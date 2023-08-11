@@ -52,9 +52,9 @@ NootNoot is an ongoing project and we plan to add more features in the future. W
 - This project was built using Eclipse Java (Version 2021-09 (4.21.0)) and IntelliJ IDEA (Version 2021.2.1)
 
 ### Contributors
-- <span style="font-size: 12px;">@AlbinDrag</span>
-- <span style="font-size: 12px;">@barrackmobamba69</span>
-- <span style="font-size: 12px;">@samuel</span>
+- @AlbinDrag
+- @barrackmobamba69
+- @samuel
 
 ## License
 For open source projects, say how it is licensed.
