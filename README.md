@@ -32,9 +32,15 @@ Tell people where they can go to for help. It can be any combination of an issue
 
 ## Technologies Used
 NootNoot is built on a number of technologies such as:
-- Java programming language
+- Java programming language (Eclipse Java (Version 2021-09 (4.21.0)) and IntelliJ IDEA (Version 2021.2.1))
 - OpenWeatherMap API for fetching weather data
 - GitLab is used as a repository to store this code
+- FreeTTS for audio functionality (Kevin16)
+
+![image](https://github.com/barrackmobamba69/NootNootChatbot/assets/106630515/c9468303-675e-4105-9c41-655233d1b654)
+              Figure 2 Collage of tools used, May 15, 2023. (Source: canva.com, 2023:online)
+
+
 
 ## Future Enhancements
 NootNoot is an ongoing project and we plan to add more features in the future such as:
