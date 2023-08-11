@@ -5,7 +5,7 @@ Welcome to our official Nootnoot Weather API Chatbot.
 ## Introduction
 Nootnoot is a chatbot application that uses weather API from the [OpenWeatherMap.org](https://home.openweathermap.org) website to provide users with real-time information on the weather of their desired cities.
 
-# Functionality
+## Functionality
 Nootnoot understands user input and responds accurately using natural language processing. Its features include:
 
 - Real-time weather updates
@@ -28,8 +28,12 @@ Within a particular ecosystem, there may be a common way of installing things, s
 ## Usage
 Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## Weather API
+To enable our chatbot to obtain current weather information, we integrated it with Nootnoot using OpenWeather (https://openweathermap.org/). 
+OpenWeather is a highly efficient API for weather services that permits us to extract weather data by utilizing JSON strings and converting them into Celsius temperature units. This approach allows us to obtain weather data by submitting a GET request through the OpenWeatherMap API website for a particular city and API key before extracting solely the temperature component from the response string. The temperature is then converted from Kelvin to Celsius degrees at a later stage.
+This approach allows us to obtain accurate current weather data and provide it to our users in a clear and concise manner.
+
+
 
 ## Technologies Used
 NootNoot is built on a number of technologies such as:
@@ -41,7 +45,6 @@ NootNoot is built on a number of technologies such as:
 ![image](https://github.com/barrackmobamba69/NootNootChatbot/assets/106630515/c9468303-675e-4105-9c41-655233d1b654)
 *Figure 1: Collage of tools used, May 15, 2023. (Source: canva.com, 2023:online)*
 
-
 ## Future Enhancements
 NootNoot is an ongoing project and we plan to add more features in the future. We are currently working on adding additional functionalities, such as:
 - GUI
@@ -51,7 +54,7 @@ NootNoot is an ongoing project and we plan to add more features in the future. W
 - I would like to acknowledge and thank [iamashks](https://github.com/iamashks/OWM-JAPIs) for sharing their chatbot code and providing inspiration for your project.
 - This project was built using Eclipse Java (Version 2021-09 (4.21.0)) and IntelliJ IDEA (Version 2021.2.1)
 
-### Contributors
+#### Contributors
 - @AlbinDrag
 - @barrackmobamba69
 - @samuel
