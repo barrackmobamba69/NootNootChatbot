@@ -43,8 +43,7 @@ NootNoot is built on a number of technologies such as:
 
 
 ## Future Enhancements
-NootNoot is an ongoing project and we plan to add more features in the future such as:
-We are currently working on more functionalities such as adding 
+NootNoot is an ongoing project and we plan to add more features in the future. We are currently working on adding additional functionalities, such as:
 - GUI
 
 ## Credits
