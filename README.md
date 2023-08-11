@@ -9,13 +9,13 @@ Nootnoot is a chatbot application that uses weather API from the [OpenWeatherMap
 Nootnoot understands user input and responds accurately using natural language processing. Its features include:
 
 - Real-time weather updates
-- Weather forecast for the next 5 days
 - Welcoming the user
 - Inputting city name
 - Searching weather data
 - Extracting temperature data
 - Providing more explanation of the climate
 - Suggesting the type of clothing
+- Weather forecast for the next 5 days
 - Audio functionality
 
 ## Visuals
@@ -38,6 +38,8 @@ To get started with this project, there are a few prerequisites that need to be 
 3. Running the Nootnoot java files
 After importing the project into your IDE, you should be able to see the project structure, which is as follows:
 ![image](https://github.com/barrackmobamba69/NootNootChatbot/assets/106630515/95f2dc65-b389-4240-b07c-66c1634223f4)
+<img src="https://github.com/barrackmobamba69/NootNootChatbot/assets/106630515/95f2dc65-b389-4240-b07c-66c1634223f4" width="300">
+
 
 •	Code_Review_Final_Nootnoot: Contains the main function that includes all project methods
 ![image](https://github.com/barrackmobamba69/NootNootChatbot/assets/106630515/f5231ab5-d585-418d-936f-10a7483c5c65)
