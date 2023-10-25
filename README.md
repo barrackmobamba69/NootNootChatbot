@@ -85,7 +85,7 @@ NootNoot is an ongoing project and we plan to add more features in the future. W
 - @samuel
 
 ## License
-For open source projects, say how it is licensed.
+This project is under the MIT License.
 
 ## Conclusion
 In summary, Nootnoot is an innovative and useful chatbot application that makes it easy and fun to check the weather. Our team is continuously improving the project by adding new features to enhance user experience.
